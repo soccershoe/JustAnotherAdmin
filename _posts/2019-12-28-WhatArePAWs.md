@@ -11,7 +11,7 @@ Since a PAW is a workstation does that mean it is a Tier 2 device (seem my other
 Allowing cross-Tier logins exposes weaknesses that can be exploited to harvest credentials.  This is the basis of Pass the Hash (PtH) attack remediation in that an interactive logon can leave password hashes resident in LSASS memory.  Thanks to publicly available tools a very low skilled hacker can harvest and utilize those hashes regardless of the password length or complexity.  “Run As” also places a hash of your NTLM credential in LSASS memory.  Beyond credentials stored in LSASS memory, vigilance against malware-based keyboard loggers need to be maintained.  Therefore, administrators should not get caught up on where the credential is stored but rather focus on the trustworthiness the entire device. This is called the [Clean Source Principal](https://docs.microsoft.com/en-us/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material).
 *It absolutely required to keep the strict segregation.  It only takes one breach of this rule to be easily exploited by tools such as Bloodhound.
 
-Lifted this image from ![Alt Image](https://docs.microsoft.com/en-us/windows-server/identity/media/privileged-access-workstations/pawfig2.jpg)
+Lifted this image from Microsoft. ![Alt Image](https://docs.microsoft.com/en-us/windows-server/identity/media/privileged-access-workstations/pawfig2.jpg)
 
 **Okay, but what is a PAW?**
 
@@ -19,4 +19,4 @@ A PAW is the workstation the admin uses to access and administer the network usi
 
 Daily user tasks such as email or web browsing will use a Tier2 classified workstation. Because the PAW adheres to the Clean Source Security Principal and is limited in functionality and internet connectivity it prevents the logged on user from freely surfing the Internet, checking email, running applications outside of those allowed for a Tier0 context, or insecurely accessing network devices that could expose risk to credential theft. It provides the admin everything they need to do their job and nothing more via “Least Privilege Security”.
 
-Lifted this image from ![Alt OtherImage](https://msdnshared.blob.core.windows.net/media/2017/10/PAW-Overview.jpg)
+Lifted this image from Microsoft. ![Alt OtherImage](https://msdnshared.blob.core.windows.net/media/2017/10/PAW-Overview.jpg)
