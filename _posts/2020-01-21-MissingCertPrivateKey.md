@@ -14,4 +14,6 @@ When the customer imported the .cer files into their MY store, the Private Key w
 
 To fix the issue, I got the certificate thumbprint and ran:  certutil.exe -repairstore my "thumbprint".  And magically after this, the cert Private Key showed that it was associated with the cert in the cert MMC console for the computer.  Weird. but now fixed.
 
+*update*
+Just found the Microsoft article to address:  [assign a private key to a new certificate](https://support.microsoft.com/en-us/help/889651/how-to-assign-a-private-key-to-a-new-certificate-after-you-use-the-cer)
 
