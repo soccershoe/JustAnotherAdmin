@@ -12,7 +12,7 @@ If you haven't deprecated your SHA1 certificate infrastructure, please try to ma
 
 When the customer imported the .cer files into their MY store, the Private Key was missing.  :open_mouth:
 
-To fix the issue, I got the certificate thumbprint and ran:  certutil.exe -repairstore my "thumbprint".  And magically after this, the cert Private Key showed that it was associated with the cert in the cert MMC console for the computer.  Weird. but now fixed.
+To fix the issue, I got the certificate thumbprint and ran:  certutil.exe -repairstore my "thumbprint".  And magically after this, the cert Private Key showed that it was associated with the cert in the cert MMC console for the computer.  Strange, but now fixed.
 
 :sparkles: *update* :sparkles:
 Just found the Microsoft article to address:  [assign a private key to a new certificate](https://support.microsoft.com/en-us/help/889651/how-to-assign-a-private-key-to-a-new-certificate-after-you-use-the-cer)

@@ -5,5 +5,13 @@ layout: default
 <p class="meta">{{ page.date | date_to_string }}</p>
 
 <div class="post">
-  {{ content }}
+    {{ content }}
+
+    <hr>
+
+    <!-- Post comments -->
+    <div class="post">
+         {% include disqus.html %}	 
+    </div>
+
 </div>
