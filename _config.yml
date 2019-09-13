@@ -5,4 +5,7 @@ permalink: /blog/:year/:month/:day/:title
 plugins:
   - jekyll-sitemap
   - jemoji
-  
+  - jekyll-paginate
+
+paginate: 5
+paginate_path: "/blog/page:num/"
