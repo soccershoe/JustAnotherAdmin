@@ -1,6 +1,6 @@
 name: Just Another Admin
 markdown: kramdown
-theme: jekyll-theme-minimal
+theme: jekyll-theme-cayman
 permalink: /blog/:year/:month/:day/:title
 url: "https://soccershoe.github.io/JustAnotherAdmin" # the base hostname & protocol for your site
 plugins:
