@@ -1,0 +1,30 @@
+to be put into a post some day.
+
+
+
+Import-Module ActiveDirectory
+#$csv = import-csv c:\temp\filtered13-3.csv
+import-csv C:\temp\filtered13-3.csv | ForEach-Object { 
+     $samAccountName = $_."samAccountName" 
+     Get-ADUser -Identity $samAccountName | Set-ADUser -ChangePasswordAtLogon:$True -Verbose
+}
+
+
+#get-aduser -Identity areynolds | set-aduser -ChangePasswordAtLogon $false -Verbose
+
+
+
+##################
+
+#Filtering users
+
+$users = import-csv C:\temp\users.csv
+$list = @()
+
+Foreach ($user in $users) {
+  $out = Get-ADUser -identity $user.samAccountname -Properties PasswordLastSet | where {$_.passwordlastset -lt ((get-date).adddays(-17))} 
+  $list += $out
+}
+
+($list | select SamAccountName,PasswordLastSet).count
+$list | select SamAccountName | Export-Csv c:\temp\filtered13-3.csv -NoTypeInformation
