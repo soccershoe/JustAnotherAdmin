@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Bulk Password Reset Flag"
-date: 2020-01-28
+date: 2020-02-7
 ---
 
 **Setting the Password Reset on Next Logon flag in bulk**
