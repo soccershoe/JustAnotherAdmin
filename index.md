@@ -6,3 +6,4 @@ title: Just Another admin
 	<h1>Hi there, I'm Just Another Admin!</h1>
 	<p>I'm best known for going cowboy when I shouldn't. Don't trust me (sometimes). <a href="/JustAnotherAdmin/about">Read more about my life...</a></p>
 </div><!-- /.blurb -->
+
