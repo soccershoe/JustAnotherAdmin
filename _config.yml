@@ -10,9 +10,9 @@ plugins:
   - jekyll-feed
   - jekyll-mentions
 
+paginate:5
 
 
-#paginate: 5
 
 #paginate_path:    '/page:num'
                     # Or '/blog/page:num' if you want to move your index pages
@@ -21,3 +21,4 @@ plugins:
 #these plugins seem to work 9/19/19
 # - jekyll-feed
 # - jemoji
+# - jekyll-mentions
