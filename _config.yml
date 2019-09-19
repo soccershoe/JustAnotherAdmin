@@ -10,7 +10,7 @@ plugins:
   - jekyll-feed
   - jekyll-mentions
 
-paginate:5
+#paginate:5
 
 
 
