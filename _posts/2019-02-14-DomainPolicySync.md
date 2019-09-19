@@ -17,5 +17,7 @@ The way I came across this was through a security project.  To increase security
 ![alt text](https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/images/whodoesthat.jpg)
 
 I really couldn't find any good Microsoft articles on this or guidance on blocking inheritance on the 'Domain Controllers' OU.  These links are the best I could find.
+
+
 <https://support.microsoft.com/en-ca/help/259576/group-policy-application-rules-for-domain-controllers>
 <https://sdmsoftware.com/group-policy-blog/gp-troubleshooting/ghosts-in-the-gpo-machine-local-security-policy-changes-on-dcs/>
