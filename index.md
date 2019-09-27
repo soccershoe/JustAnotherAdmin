@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Just Another admin
+sitemap: true
 ---
 <div class="blurb">
 	<h1>Hi there, I'm Just Another Admin!</h1>
