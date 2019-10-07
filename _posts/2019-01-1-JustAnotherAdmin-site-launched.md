@@ -16,3 +16,4 @@ I needed to update Ruby.  How do you update Ruby?  I have no idea.  But I found 
 
 https://medium.com/@IanRahman/how-to-upgrade-ruby-on-a-mac-a592c6085c63
 
+![alt text](https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/images/whatamidoing.jpg)
