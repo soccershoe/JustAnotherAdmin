@@ -6,6 +6,8 @@ date: 2020-01-28
 
 **Users Using the Same Password in Mulitple Domains**
 
+{{ more }}
+
 This is a fun problem for admins, or security guys.  Say you manage multiple domains or forests and users probably have the same samaccountname or some other defining account attribute.  Or maybe it's the SQL team that never has to change passwords or the helpdesk enables users to use the same password.  Best practices should be that those user accounts do not use the same password between these domains/forests.  
 
 How do you as a concerned admin or security pro find out if there are violations of this best practice so you can go and remediate this issue?

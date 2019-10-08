@@ -6,6 +6,8 @@ date: 2020-01-21
 
 **Where's My Certificate Private Key?**
 
+{{ more }}
+
 I had just completed a handful of custom certs for a customer.  Their computer certs expired and they needed new ones.  Unfortunately, this was an old system and the certs needed to come from our old SHA1 PKI servers.  No problem.  Those Enterprise CA's aren't retired, just no longer servicing SHA1 certs anymore, or any new certs for that matter.  
 
 If you haven't deprecated your SHA1 certificate infrastructure, please try to make this a priority.  It's a hefty security risk.

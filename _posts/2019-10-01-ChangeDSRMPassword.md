@@ -6,6 +6,8 @@ date: 2019-10-01
 
 **Using Unique DSRM Passwords**
 
+{{ more }}
+
 Your domain controllers have a shared user database in Active Directory.  So you only have to worry about your domain admin account and protecting that account.  _Not really_
 
 Each of your domain controllers also have a local account database.  This is where the Directory Services Recovery Mode (DSRM) account lives.  It's important that this account also be protected with the same diligence as your domain admin account.  This account isn't sync'ed between domain controllers. Each DSRM account is unique to that domain controller.  This is your break glass account in case all hell breaks loose or you need to do some serious offline AD maintenance.  At this point, if you need to use that account, you may be sweating bullets.  

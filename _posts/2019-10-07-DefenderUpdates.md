@@ -6,6 +6,8 @@ date: 2019-10-07
 
 **Updating Defender Manually**
 
+{{ more }}
+
 Since I'm doing this infrequently, but enough to keep forgetting the link, I'll post this for myself to remember.
 
 [https://www.microsoft.com/en-us/wdsi/definitions/](https://www.microsoft.com/en-us/wdsi/definitions/)
