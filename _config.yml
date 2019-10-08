@@ -4,7 +4,7 @@ theme: jekyll-theme-slate
 permalink: /blog/:year/:month/:day/:title
 paginate_path: /blog/page:num/
 url: "https://soccershoe.github.io/JustAnotherAdmin" # the base hostname & protocol for your site
-excerpt_separator: "<!-- more -->"
+excerpt_separator: "{{ more }}"
 plugins:
   - jekyll-sitemap
   - jemoji
