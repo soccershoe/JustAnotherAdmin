@@ -6,6 +6,8 @@ date: 2020-02-7
 
 **Setting the Password Reset on Next Logon flag in bulk**
 
+{{ more }}
+
 I had this problem the other day.  How do you reset a bunch of users accounts to change password on next logon.  And your manager or security team asks if you can do it for this specific group of people, and of those people, only the people in the last 17 days who haven't already changed their password, need to change password on next logon.  Luckily I was provided an intial list of users.
 
 ![alt text](https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/images/ManagersEverywhere.jpg)
