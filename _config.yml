@@ -1,7 +1,7 @@
 name: Just Another Admin
 markdown: kramdown
-theme: jekyll-theme-minimal
-#remote_theme: mattvh/jekyllthemes
+#theme: jekyll-theme-minimal
+remote_theme: poole/hyde
 permalink: /blog/:year/:month/:day/:title
 paginate_path: /blog/page:num/
 baseurl: "/JustAnotherAdmin" # the subpath of your site, e.g. /blog
