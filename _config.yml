@@ -1,6 +1,6 @@
 name: Just Another Admin
 markdown: kramdown
-theme: jekyll-theme-slate
+theme: pmarsceill/just-the-docs
 permalink: /blog/:year/:month/:day/:title
 paginate_path: /blog/page:num/
 url: "https://soccershoe.github.io/JustAnotherAdmin" # the base hostname & protocol for your site
@@ -11,6 +11,7 @@ plugins:
   - jekyll-paginate
   - jekyll-feed
   - jekyll-mentions
+  - jekyll-remote-theme
   
 
 
