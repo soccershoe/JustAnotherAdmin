@@ -31,6 +31,7 @@ plugins:
                     # Or '/blog/page:num' if you want to move your index pages
 #paginate_path: "/blog/page:num/"
 
+
 #these plugins seem to work 9/19/19
 # - jekyll-feed
 # - jemoji
