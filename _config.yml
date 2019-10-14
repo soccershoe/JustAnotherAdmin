@@ -1,6 +1,6 @@
 name: Just Another Admin
 markdown: kramdown
-theme: pmarsceill/just-the-docs
+theme: jekyll-theme-cayman
 permalink: /blog/:year/:month/:day/:title
 paginate_path: /blog/page:num/
 baseurl: "/JustAnotherAdmin" # the subpath of your site, e.g. /blog
