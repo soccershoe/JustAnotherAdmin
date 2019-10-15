@@ -19,7 +19,7 @@ plugins:
   
 
 ### all stuff for the 'just-the-docs' theming ###
-#logo: "/assets/GokuLogoT.png"
+logo: "https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/images/GokuLogoT.png"
 
 # Enable or disable the site search
 # Supports true (default) or false
