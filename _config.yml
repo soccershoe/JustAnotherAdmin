@@ -1,4 +1,5 @@
 name: Just Another Admin
+description:  This is my site for sharing back with the IT world.
 markdown: kramdown
 #theme: jekyll-theme-minimal
 remote_theme: pmarsceill/just-the-docs
@@ -14,12 +15,35 @@ plugins:
   - jekyll-feed
   - jekyll-mentions
   - jekyll-remote-theme
+#  - jekyll-seo-tag  ## this is for enabling in the just-the-docs theme. not sure if this plugin is whitelisted by default for Github Pages
   
 
-logo: "/assets/GokuLogoT.png"
+### all stuff for the 'just-the-docs' theming ###
+#logo: "/assets/GokuLogoT.png"
 
+# Enable or disable the site search
+# Supports true (default) or false
+search_enabled: true
 
+# Enable or disable heading anchors
+heading_anchors: true
 
+# Aux links for the upper right navigation
+aux_links:
+  "Just Another Admin":
+    - "//github.com/soccershoe"
+
+# Footer content appears at the bottom of every page's main content
+footer_content: "Copyright &copy; This Guy. Distributed by an <a href=\"https://github.com/soccershoe/\">MY license.</a>"
+
+# Color scheme currently only supports "dark" or nil (default)
+color_scheme: nil
+
+# Google Analytics Tracking (optional)
+# e.g, UA-1234567-89
+#ga_tracking: UA-2709176-10
+
+### end just-the-docs configurations ###
 
 
 
