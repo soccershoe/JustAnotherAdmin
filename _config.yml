@@ -19,11 +19,11 @@ plugins:
   
 
 ### all stuff for the 'just-the-docs' theming ###
-logo: "https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/images/GokuLogoT.png"
+logo: "https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/images/KidGokuT.png"
 
 # Enable or disable the site search
 # Supports true (default) or false
-search_enabled: true
+search_enabled: false
 
 # Enable or disable heading anchors
 heading_anchors: true
