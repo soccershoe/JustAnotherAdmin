@@ -1,7 +1,8 @@
 ---
 layout: default
-title: Just Another admin
+title: Just Another Admin
 sitemap: true
+nav_order: 1
 ---
 
 **Hi there, I'm Just Another Admin!**
