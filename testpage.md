@@ -1,5 +1,5 @@
 ---
-title: Just Another admin test page
+title: test page
 nav_order: 3
 ---
 
