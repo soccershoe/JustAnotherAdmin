@@ -37,7 +37,7 @@ aux_links:
 footer_content: "Copyright &copy; This Guy. Distributed by <a href=\"https://github.com/soccershoe/\">MY license.</a>"
 
 # Color scheme currently only supports "dark" or nil (default)
-color_scheme: dark
+color_scheme: nil
 
 # Google Analytics Tracking (optional)
 # e.g, UA-1234567-89
