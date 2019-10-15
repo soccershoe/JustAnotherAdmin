@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Just Another Admin
+title: Home
 sitemap: true
 nav_order: 1
 ---
