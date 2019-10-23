@@ -1,8 +1,6 @@
 ---
 layout: default
 title: Home
-sitemap: true
-nav_order: 1
 ---
 
 **Hi there, I'm Just Another Admin!**
