@@ -20,6 +20,8 @@ plugins:
 logo: "https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/images/KidGokuT.png"
 show_downloads: true
 
+author: This Guy
+
   
 ########################################
 ### all stuff for the 'just-the-docs' theming ###
