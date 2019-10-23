@@ -1,5 +1,5 @@
 name: Just Another Admin
-description:  This is my site for sharing back with the IT world.
+description:  This is my site for sharing back with the IT world. <p></p><ul style="list-style-type:disc;"><li><a href="https://soccershoe.github.io/JustAnotherAdmin/about">About</a></li><li><a href="https://soccershoe.github.io/JustAnotherAdmin/blog">Blog</a></li><li><a href="https://soccershoe.github.io/JustAnotherAdmin/testpage">Test</a></li></ul>
 markdown: kramdown
 theme: jekyll-theme-minimal
 #remote_theme: pmarsceill/just-the-docs
