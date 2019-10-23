@@ -17,7 +17,7 @@ plugins:
   - jekyll-remote-theme
 #  - jekyll-seo-tag  ## this is for enabling in the just-the-docs theme. not sure if this plugin is whitelisted by default for Github Pages
   
-
+logo: "https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/images/KidGokuT.png"
 
 
   
