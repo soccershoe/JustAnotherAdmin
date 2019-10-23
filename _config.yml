@@ -1,5 +1,5 @@
 #name: Just Another Admin
-description:  This is my site for sharing back with the IT world.
+#description:  This is my site for sharing back with the IT world.
 markdown: kramdown
 theme: jekyll-theme-minimal
 #remote_theme: pmarsceill/just-the-docs
