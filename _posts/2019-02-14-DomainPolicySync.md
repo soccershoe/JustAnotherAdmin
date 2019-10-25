@@ -8,7 +8,7 @@ date: 2019-02-14
 
 {{ more }}
 
-I didn't know this before.  But it makes sense to me now.  There are several password related settings that are synced between domain controllers, but these settings are in the Local Security Policy.  These password settings are synced, as stated by Microsoft, so "that the members of the domain have a consistent experience regardless of which domain controller they use to log on".  
+I didn't know this before.  But it makes sense to me now.  There are several password related settings that are synced between domain controllers, but these settings are in the Local Security Policy.  Specifically it is the password related settings are synced, as stated by Microsoft, so "that the members of the domain have a consistent experience regardless of which domain controller they use to log on".  
 
 *Example_*  Say you open up the Local Security Policy on a domain controller in your domain.  Then go ahead and edit a password policy setting like the account lockout time or password length.  The setting will update in the Local Security Policy on all the other domain controllers in your domain.  The Local Security Policy isn't so "local" for these password settings.  On top of that, if you are auditing who's writing to your GPO's (you should be doing that or using AGPM), you'll see that the "Default Domain Policy" is getting updated as well!  Whoa!
 
@@ -20,7 +20,7 @@ Anyways... If your password settings in your 'Default Domain Policy' aren't appl
 
 ![alt text](https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/images/whodoesthat.jpg)
 
-I really couldn't find any good Microsoft articles on this or guidance on blocking inheritance on the 'Domain Controllers' OU.  These links are the best I could find.
+I really couldn't find any good Microsoft articles on this or guidance on blocking inheritance on the 'Domain Controllers' OU.  These links are the best I could find for now.
 
 
 <https://support.microsoft.com/en-ca/help/259576/group-policy-application-rules-for-domain-controllers>
