@@ -6,6 +6,8 @@ date: 2019-10-28
 
 **Let's start Logging All The Things**
 
+{{ more }}
+
 This is a long one, so lets get going.
 
 What has a free log centralization platform built into it's operating system?  Windows.  Using Windows Event Forwarding (WEF) and some Active Directory GPO's, we can create a system where you can centralize all your logging to do what you like with.  You can then send your logs on forward to Splunk or ELK or some other searching platform.  Or just keep it on the centralized WEF server.  

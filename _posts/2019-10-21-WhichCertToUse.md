@@ -4,6 +4,9 @@ title: "Which Cert To Use"
 date: 2019-10-21
 ---
 
+**Domain Controllers with Multiple Certificates Setup**
+
+{{ more }}
 
 I set up my environment with domain controllers that have multiple certificates.  The first certificate is in the computer MY store.  This certificate is set to renew on a regular basis using our windows PKI environment.  I have the permissions on the Certificate Template to autoenroll.  
 
