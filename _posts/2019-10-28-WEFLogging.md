@@ -99,9 +99,9 @@ Here is where I have placed all my necessary files for building the WEC server. 
 *C:\WEC-Subscriptions – Location for Scheduled Task XML backups and Powershell
 *D:\WEC-EventLogs - folder where the custom EventLogs will eventually reside
 
-**Deploying the actual WEC Server**
+**Deploying the actual WEC Server (assuming GPO's already deployed)**
 
-Build New WEF Server (This is te abbreviated version.)
+Build New WEF Server (This is te abbreviated version if your infrastructure is good to go.)
 1) Copy WEC-Build, WEC-Scripts, WEC-Subscriptions to C:\ from existing WEF server.
 2) Import all Scheduled Tasks located in WEC-Scripts.
 3) xcopy C:\WEC-Scripts\WUInstallation\*.* C:\Windows\System32\WindowsPowerShell\v1.0\Modules /E
