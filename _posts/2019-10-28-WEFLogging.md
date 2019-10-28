@@ -8,7 +8,7 @@ date: 2019-10-28
 
 {{ more }}
 
-This is a long one, so lets get going.
+This is a long one, so lets get going.  Let's set up a WEF environment!
 
 What has a free log centralization platform built into it's operating system?  Windows.  Using Windows Event Forwarding (WEF) and some Active Directory GPO's, we can create a system where you can centralize all your logging to do what you like with.  You can then send your logs on forward to Splunk or ELK or some other searching platform.  Or just keep it on the centralized WEF server.  
 
@@ -16,14 +16,14 @@ Let's implement Windows Event Forwarding for the whole of your Windows environme
 
 **Let's start off with some Definitions:**
 
-**WEF** – Windows Event Forwarding (WEF) is a powerful log forwarding solution integrated within modern versions of Microsoft Windows.
+***WEF** – Windows Event Forwarding (WEF) is a powerful log forwarding solution integrated within modern versions of Microsoft Windows.
 WEF allows for event logs to be sent, either via a push or pull mechanism, to one or more centralized Windows Event Collector (WEC)
 servers. WEF is agent-free, and relies on native components integrated into the operating system.
-**Windows Event Channels** - Event Channels are queues that can be used for collecting and storing event log entries on a collector server.
-**Windows Event Collector** – Windows Event Collector (WEC) is the central server collecting all the event logs sent from the clients.
-**Subscriptions** – Eventlog Subscriptions are the configuration item polled by client machines to tells the client specific eventlog entries to
+***Windows Event Channels** - Event Channels are queues that can be used for collecting and storing event log entries on a collector server.
+***Windows Event Collector** – Windows Event Collector (WEC) is the central server collecting all the event logs sent from the clients.
+***Subscriptions** – Eventlog Subscriptions are the configuration item polled by client machines to tells the client specific eventlog entries to
 send to the WEF server.
-**Push/Pull** – Subscriptions can be configured to push or pull the eventlog entries to/from the WEF server. EITSO uses push Subscriptions.
+***Push/Pull** – Subscriptions can be configured to push or pull the eventlog entries to/from the WEF server. EITSO uses push Subscriptions.
 
 **What are the Requirements**
 
