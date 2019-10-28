@@ -99,7 +99,7 @@ Here is where I have placed all my necessary files for building the WEC server. 
   * C:\WEC-Build - Files and apps needed to build and maintain the .DLL and .MAN files
   * C:\WEC-Scripts – Various scripts for WEF maintenance
   * C:\WEC-Subscriptions – Location for Scheduled Task XML backups and Powershell
-  * D:\WEC-EventLogs - folder where the custom EventLogs will eventually reside
+  * .D:\WEC-EventLogs - folder where the custom EventLogs will eventually reside
 
 **Deploying the actual WEC Server (assuming GPO's already deployed)**
 
