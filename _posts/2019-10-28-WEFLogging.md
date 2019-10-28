@@ -16,14 +16,14 @@ Let's implement Windows Event Forwarding for the whole of your Windows environme
 
 **Let's start off with some Definitions:**
 
-***WEF** – Windows Event Forwarding (WEF) is a powerful log forwarding solution integrated within modern versions of Microsoft Windows.
+  * **WEF** – Windows Event Forwarding (WEF) is a powerful log forwarding solution integrated within modern versions of Microsoft Windows.
 WEF allows for event logs to be sent, either via a push or pull mechanism, to one or more centralized Windows Event Collector (WEC)
 servers. WEF is agent-free, and relies on native components integrated into the operating system.
-***Windows Event Channels** - Event Channels are queues that can be used for collecting and storing event log entries on a collector server.
-***Windows Event Collector** – Windows Event Collector (WEC) is the central server collecting all the event logs sent from the clients.
-***Subscriptions** – Eventlog Subscriptions are the configuration item polled by client machines to tells the client specific eventlog entries to
+  * **Windows Event Channels** - Event Channels are queues that can be used for collecting and storing event log entries on a collector server.
+  * **Windows Event Collector** – Windows Event Collector (WEC) is the central server collecting all the event logs sent from the clients.
+  * **Subscriptions** – Eventlog Subscriptions are the configuration item polled by client machines to tells the client specific eventlog entries to
 send to the WEF server.
-***Push/Pull** – Subscriptions can be configured to push or pull the eventlog entries to/from the WEF server. EITSO uses push Subscriptions.
+  * **Push/Pull** – Subscriptions can be configured to push or pull the eventlog entries to/from the WEF server. EITSO uses push Subscriptions.
 
 **What are the Requirements**
 
