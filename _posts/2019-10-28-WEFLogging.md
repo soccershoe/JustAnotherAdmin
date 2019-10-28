@@ -30,9 +30,9 @@ send to the WEF server.
   * Group Policy Objects (GPOs) to control security auditing and event logging.
   * One or more servers with a configured Windows Event Log Collector service (often referred to as the "WEF Server" or "WEF
 Collector").
-  * Functional Kerberos for all endpoints (domain) or a valid TLS certificate (non-domain) for the Event Log Collector servers.
+  * Functional Kerberos for all endpoints (domain) or a valid TLS certificate (non-domain) for the Event Log Collector servers. *Note: My install doesn't include directions for non-domain joined WEF servers or clients.*
   * Windows Remote Management (WinRM) enabled on all workstations and servers that will forward events.
-  * Firewall rules permitting WinRM connectivity between the devices.
+  * Firewall rules permitting WinRM connectivity (TCP 5985/5986) and WEF between the devices.
   * GPOs to specify the URL of the WEF subscription manager(s).
   * One or more event log subscriptions. A subscription is a collection of events based on Event IDs or other criteria to tell the
 endpoints which event logs to forward.
@@ -49,29 +49,29 @@ machines.
 Don't worry so much about details, just that this is kind of how it goes down on the client side.
 
 The following actions occur upon first receiving appropriate GPOs on a workstation:
-*The workstation configures security auditing and starts writing to the local event log.
-*The workstation connects to the subscription manager(s) using WinRM, authenticated either via Kerberos or TLS. In both cases,
+  * The workstation configures security auditing and starts writing to the local event log.
+  * The workstation connects to the subscription manager(s) using WinRM, authenticated either via Kerberos or TLS. In both cases,
 transport-layer encryption is applied.
-*The workstation registers itself in the registry of the Event Log Collector (WEC server), and downloads a list of all relevant WEF
+  * The workstation registers itself in the registry of the Event Log Collector (WEC server), and downloads a list of all relevant WEF
 Subscriptions.
-*The workstation periodically sends events to the Event Log Collector(s) as defined in the subscription files. Additionally, the
+  * The workstation periodically sends events to the Event Log Collector(s) as defined in the subscription files. Additionally, the
 workstation connects on a periodic heartbeat.
-*As new devices are added to the domain and receive the appropriate security logging and WEF subscription GPOs, they will automatically
+  * As new devices are added to the domain and receive the appropriate security logging and WEF subscription GPOs, they will automatically
 begin forwarding events, reducing the administrative burden of ensuring log coverage and quality.
-*In my environment, a WEC server is deployed for an AD site or group of AD sites (depending on load) as configured via GPO and runs the Event Log Collector service. A group policy object instructs all clients in the site to communicate with the WEF server, which provides a copy of the subscriptions that the workstation should use.
+  * In my environment, a WEC server is deployed for an AD site or group of AD sites (depending on load) as configured via GPO and runs the Event Log Collector service. A group policy object instructs all clients in the site to communicate with the WEF server, which provides a copy of the subscriptions that the workstation should use.
 
 **A few limits on things**
 
 While WEF provides immense value, it is not without limitations. These limitations should be considered when evaluating a WEF
 deployment for your organization.
 
-*Load balancing is difficult. When using Kerberos, it is difficult—if not impossible—to effectively load balance the forwarded events
+  * Load balancing is difficult. When using Kerberos, it is difficult—if not impossible—to effectively load balance the forwarded events
 between multiple nodes. While events can be forwarded to multiple WEF servers, traditional methods of load balancing the traffic
 do not work as the Service Principle Name (SPN) cannot be duplicated.
-*Active diagnosis and troubleshooting is limited. When WEF fails, it is often difficult to diagnose why. There are limited tools for
+  * Active diagnosis and troubleshooting is limited. When WEF fails, it is often difficult to diagnose why. There are limited tools for
 troubleshooting client issues, or validating the health of a given node. We have dedicated a section to addressing these issues later
 in this article.
-*WEF supports a subset of XPath 1.0. This limits Subscriptions in size and scope. This will create more log files for growth if needed.
+  * WEF supports a subset of XPath 1.0. This limits Subscriptions in size and scope. This will create more log files for growth if needed.
 
 **Defining WEF Subscriptions**
 
@@ -84,22 +84,22 @@ MSDN documentation (links below)
 More details here that we don't have to worry about yet.
 WEF can be extended with additional custom event channels. Extending the number of event channels available provides a few primary
 benefits:
-*Each event channel can have an independent maximum size and rotation strategy.
-*Each event channel can be used as a unique identifier for tagging data for ingestion into a SIEM (splunk or whatever else).
-*Event channels may be placed on different disks or storage devices for improving disk I/O.
-*Creating new event logs can be completed with the directions here: https://blogs.technet.microsoft.com/russellt/2016/05/18/creatingcustom-windows-event-forwarding-logs/ 
-*NOTE: The WEF configuration can only have one .DLL deployed. Use the existing .MAN file to build the new .DLL to maintain the current
+  * Each event channel can have an independent maximum size and rotation strategy.
+  * Each event channel can be used as a unique identifier for tagging data for ingestion into a SIEM (splunk or whatever else).
+  * Event channels may be placed on different disks or storage devices for improving disk I/O.
+  * Creating new event logs can be completed with the directions here: https://blogs.technet.microsoft.com/russellt/2016/05/18/creatingcustom-windows-event-forwarding-logs/ 
+  * NOTE: The WEF configuration can only have one .DLL deployed. Use the existing .MAN file to build the new .DLL to maintain the current
 event logs while adding new ones.
-*The Windows SDK is required to build the DLL. From Microsoft: "Developers who rely on ecmangen for event manifest creation are advised
+  * The Windows SDK is required to build the DLL. From Microsoft: "Developers who rely on ecmangen for event manifest creation are advised
 to install the Windows Creators Edition of the SDK to obtain the file"
 
 **Configuration File Locations**
 
 Here is where I have placed all my necessary files for building the WEC server.  They may be referenced in the scripts or scheduled tasks, so update cautiously if you would like a different location.
-*C:\WEC-Build - Files and apps needed to build and maintain the .DLL and .MAN files
-*C:\WEC-Scripts – Various scripts for WEF maintenance
-*C:\WEC-Subscriptions – Location for Scheduled Task XML backups and Powershell
-*D:\WEC-EventLogs - folder where the custom EventLogs will eventually reside
+  * C:\WEC-Build - Files and apps needed to build and maintain the .DLL and .MAN files
+  * C:\WEC-Scripts – Various scripts for WEF maintenance
+  * C:\WEC-Subscriptions – Location for Scheduled Task XML backups and Powershell
+  * D:\WEC-EventLogs - folder where the custom EventLogs will eventually reside
 
 **Deploying the actual WEC Server (assuming GPO's already deployed)**
 
