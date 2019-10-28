@@ -125,7 +125,7 @@ Client Auditing is configured via a GPO.  I've created a new one specific to Aud
 
 For redundancy, I've created the GPO such that clients will send their events to two different WEC servers at the same time.
 
-Clients Audit GPO – GPO defining auditable events and event log size (example includes GPO GPP setting for applying to a client site).
-WEC Server GPO – GPO defining settings required by the WEF servers (example includes GPP setting to make sure the Wecsvc service starts as well as configuration for WinRM).
+  * **Clients Audit GPO** – GPO defining auditable events and event log size (example includes GPO GPP setting for applying to a client site).
+  * **WEC Server GPO** – GPO defining settings required by the WEF servers (example includes GPP setting to make sure the Wecsvc service starts as well as configuration for WinRM).
 *links below*
 
