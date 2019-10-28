@@ -27,21 +27,21 @@ send to the WEF server.
 
 **What are the Requirements**
 
-*Group Policy Objects (GPOs) to control security auditing and event logging.
-*One or more servers with a configured Windows Event Log Collector service (often referred to as the "WEF Server" or "WEF
+  * Group Policy Objects (GPOs) to control security auditing and event logging.
+  * One or more servers with a configured Windows Event Log Collector service (often referred to as the "WEF Server" or "WEF
 Collector").
-*Functional Kerberos for all endpoints (domain) or a valid TLS certificate (non-domain) for the Event Log Collector servers.
-*Windows Remote Management (WinRM) enabled on all workstations and servers that will forward events.
-*Firewall rules permitting WinRM connectivity between the devices.
-*GPOs to specify the URL of the WEF subscription manager(s).
-*One or more event log subscriptions. A subscription is a collection of events based on Event IDs or other criteria to tell the
+  * Functional Kerberos for all endpoints (domain) or a valid TLS certificate (non-domain) for the Event Log Collector servers.
+  * Windows Remote Management (WinRM) enabled on all workstations and servers that will forward events.
+  * Firewall rules permitting WinRM connectivity between the devices.
+  * GPOs to specify the URL of the WEF subscription manager(s).
+  * One or more event log subscriptions. A subscription is a collection of events based on Event IDs or other criteria to tell the
 endpoints which event logs to forward.
-*A GPO is linked at the root of the domain labeled with the relevant settings. The setting in the GPO directs each client machine in
+  * A GPO is linked at the root of the domain labeled with the relevant settings. The setting in the GPO directs each client machine in
 the domain which WEF server to talk to, every 15 minutes (configurable), to check if it has any Subscriptions specific to that
 computer and what events to send.
-*The WEC server is then configured with the Eventlog MMC. The subscriptions are created with the relevant info for the client
+  * The WEC server is then configured with the Eventlog MMC. The subscriptions are created with the relevant info for the client
 machines.
-*From there, Splunk can be configured to pull the collected logs
+  * From there, Splunk can be configured to pull the collected logs
 
 ![alt text](https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/images/WEFPicture.PNG)
 
