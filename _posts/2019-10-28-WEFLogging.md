@@ -154,7 +154,7 @@ Deploy some Scheduled Maintenance tasks.  Add each of these Scheduled tasks in T
 5. System_Microsoft-Windows-Resource-Exhaustion-Detector_2004 - This task will restart the server if event id 2004 shows up in the System
 event log.  2004 warns of resource exhaustion.  It's happened to me, so I made this.
 
-**Deploy the Channels**
+**Deploy the Channels and Move the Eventlogs**
 
 Once the DLL has been created using the directions previous, use the following steps to deploy the DLL. This must be executed on each
 Subscription Manager (WEC server):
@@ -173,6 +173,82 @@ foreach ($subscription in $xml) {
 wevtutil sl $subscription /ms:2194304000
 }
 ```
+
+Move the event logs to the D: drive to be more flexible with disk size and performance. Disk performance can be a bottleneck.
+Run the below in Powershell or use the WEC-Move-Eventlogs.ps1 located in C:\WEC-Scripts.
+
+```
+Stop-Service wecsvc
+$xml = wevtutil el | select-string -pattern "WEC"
+foreach ($subscription in $xml) {
+wevtutil sl $subscription /lfn:D:\WEC-EventLogs\$subscription.evtx
+}
+Start-Service wecsvc
+```
+
+**Troubleshooting**
+
+Ok.  This section needs a bit more info.  But here's what I have for now.
+1. WinRM connection issues get logged here on the server side: C:\Windows\System32\LogFiles\HTTPERR.  Might be able to find some branches to follow when clients are unable to connect.
+2. 
+
+**Other Notes**
+
+1. Registry Pruning
+   * Delete keys under HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\EventCollector\Subscriptions<SubscriptionName> for PCs that are no longer active. A script with a scheduled task is deployed on each WEC server that just looks for the last heartbeat time and has intelligence to remove keys here that with HeartBeat times older than a specific threshold.
+2. HTTPErr log pruning
+   * Delete files under C:\Windows\System32\Logfiles\HTTPErr The files record errors for the WinRM connections. WinRM uses HTTP.SYS, the same driver as IIS, which means it logs certain things by default.
+3. Keep each WEF server under 2000 subscriptions. This should be a manageable size while still being able to use the MMC.exe GUI usable.
+4. A weekly scheduled reboot task is created to keep the server healthy from memory leaks. *Windows may be a little leaky.*
+
+**Appendix**
+
+  * List of WEF channels as I have configured:
+1. WEC-Powershell: Event channel for collecting PowerShell events.
+2. WEC-WMI: Event channel for collecting WMI events.
+3. WEC-EMET: Event channel for collecting EMET events.
+4. WEC-Authentication: Event channel for collecting authentication events.
+5. WEC-Services: Event channel for collecting services events.
+6. WEC-Process-Execution: Event channel for collecting process creation/termination events.
+7. WEC-Code-Integrity: Event channel for collecting device guard and code integrity events.
+8. WEC2-Registry: Event channel for collecting registry audit events.
+9. WEC2-Object-Manipulation: Event channel for collecting object audit events.
+10. WEC2-Applocker: Event channel for collecting applocker events.
+11. WEC2-Task-Scheduler: Event channel for collecting scheduled task and at events.
+12. WEC2-Application-Crashes: Event channel for collecting application crash events.
+13. WEC2-Windows-Defender: Event channel for collecting windows defender events.
+14. WEC2-Group-Policy-Errors: Event channel for collecting group policy error events.
+15. WEC3-Drivers: Event channel for collecting driver events.
+16. WEC3-Account-Management: Event channel for collecting account management events.
+17. WEC3-Windows-Diagnostics: Event channel for collecting diagnostic events.
+18. WEC3-Smart-Card: Event channel for collecting smart card events.
+19. WEC3-External-Devices: Event channel for collecting USB and external device events.
+20. WEC3-Print: Event channel for collecting printer and print job events.
+21. WEC3-Firewall: Event channel for collecting firewall events.
+22. WEC4-Wireless: Event channel for collecting 802.1 wireless events.
+23. WEC4-Shares: Event channel for collecting SMB share events.
+24. WEC4-Bits-Client: Event channel for collecting BITS Client events.
+25. WEC4-Windows-Update: Event channel for collecting windows update events.
+26. WEC4-Hotpatching-Errors: Event channel for collecting hotpatching error events.
+27. WEC4-DNS: Event channel for collecting DNS query and DLL loading events.
+28. WEC4-System-Time-Change: Event channel for collecting time change events.
+29. EC5-Operating-System: Event channel for collecting operating system events.
+30. WEC5-Certificate-Authority: Event channel for collecting CA events.
+31. WEC5-Crypto-API: Event channel for collecting crypto API events.
+32. WEC5-MSI-Packages: Event channel for collecting package installation events.
+33. WEC5-Log-Deletion-Security: Event channel for collecting log deletion events.
+34. WEC5-Log-Deletion-System: Event channel for collecting log deletion events.
+35. WEC5-Autoruns: Event channel for collecting Autoruns-To-Wineventlog events.
+36. WEC6-Exploit-Guard: Event channel for collecting Exploit Guard events.
+37. WEC6-Duo-Security: Event channel for collecting Duo Security events.
+38. WEC6-Device-Guard: Event channel for collecting Device Guard events.
+39. WEC6-ADFS: Event channel for collecting Active Directory Federation Services events.
+40. WEC6-Sysmon: Event channel for collecting Sysinternals Sysmon events.
+41. WEC6-Software-Restriction-Policies: Event channel for collecting Software Restriction Policy events.
+42. WEC6-Microsoft-Office: Event channel for collecting Microsoft Office events.
+43. WEC7-Active-Directory: Event channel for collecting Active Directory change events.
+44. WEC7-Terminal-Services: Event channel for collecting Terminal Services and Terminal Services Gateway events.
+45. WEC7-Privilege-Use: Event channel for collecting privilege events.
 
 
 
