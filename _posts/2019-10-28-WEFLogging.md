@@ -91,7 +91,7 @@ benefits:
   * Each event channel can have an independent maximum size and rotation strategy.
   * Each event channel can be used as a unique identifier for tagging data for ingestion into a SIEM (splunk or whatever else).
   * Event channels may be placed on different disks or storage devices for improving disk I/O.
-  * Creating new event logs can be completed with the directions here: ![alt text](https://blogs.technet.microsoft.com/russellt/2016/05/18/creatingcustom-windows-event-forwarding-logs/)
+  * Creating new event logs can be completed with the directions here: <https://blogs.technet.microsoft.com/russellt/2016/05/18/creatingcustom-windows-event-forwarding-logs/>
   * NOTE: The WEF configuration can only have one .DLL deployed. Use the existing .MAN file to build the new .DLL to maintain the current
 event logs while adding new ones.
   * The Windows SDK is required to build the DLL. From Microsoft: "Developers who rely on ecmangen for event manifest creation are advised
