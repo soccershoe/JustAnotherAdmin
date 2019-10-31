@@ -104,19 +104,20 @@ Here is where I have placed all my necessary files for building the WEC server. 
 **Deploying the actual WEC Server (assuming GPO's already deployed)**
 
 Build New WEF Server (This is te abbreviated version if your infrastructure is good to go.)
-1) Copy WEC-Build, WEC-Scripts, WEC-Subscriptions to C:\ from existing WEF server.
-2) Import all Scheduled Tasks located in WEC-Scripts.
-3) xcopy C:\WEC-Scripts\WUInstallation\*.* C:\Windows\System32\WindowsPowerShell\v1.0\Modules /E
-4) Create D:\WEC-EventLogs.
-5) Deploy Subscriptions using .\WEC-Deploy-Subscriptions.ps1.
-6) Deploy the Channels.
-     a) wevtutil um C:\windows\system32\CustomEventChannels.man (only needed if CustomEventChannels.man has been previously
-loaded)
-     b) xcopy C:\WEC-Build\CustomEventChannels.* C:\windows\system32
-     c) wevtutil im C:\windows\system32\CustomEventChannels.man
-7) Restart Server
-8) Set EventLog size using .\WEC-Set-EventlogSize.ps1.
-9) Move EventLogs using .\WEC-Move-Eventlogs.ps1.
+
+1. Copy WEC-Build, WEC-Scripts, WEC-Subscriptions to C:\ from existing WEF server.
+2. Import all Scheduled Tasks located in WEC-Scripts.
+3. xcopy C:\WEC-Scripts\WUInstallation\*.* C:\Windows\System32\WindowsPowerShell\v1.0\Modules /E
+4. Create D:\WEC-EventLogs.
+5. Deploy Subscriptions using .\WEC-Deploy-Subscriptions.ps1.
+6. Deploy the Channels.
+       1. wevtutil um C:\windows\system32\CustomEventChannels.man (only needed if CustomEventChannels.man has been previously loaded)
+       2. xcopy C:\WEC-Build\CustomEventChannels.* C:\windows\system32
+       3. wevtutil im C:\windows\system32\CustomEventChannels.man
+7. Restart Server
+8. Set EventLog size using .\WEC-Set-EventlogSize.ps1.
+9. Move EventLogs using .\WEC-Move-Eventlogs.ps1.
+
 the end
 
 **Configure your Auditing GPO**
