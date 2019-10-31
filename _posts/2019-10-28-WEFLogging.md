@@ -250,7 +250,67 @@ Ok.  This section needs a bit more info.  But here's what I have for now.
 44. WEC7-Terminal-Services: Event channel for collecting Terminal Services and Terminal Services Gateway events.
 45. WEC7-Privilege-Use: Event channel for collecting privilege events.
 
+**Building DLL Overview**
 
+This only needs to be completed if the WEC Subscriptions need to be changed from the build already supplied from the .dll and .man.
+
+Prereq:  Windows 10 SDK from Creators Edition (I think you need this specific version because MS moved some stuff around and moved or removed the ecmangen.exe file)
+
+*Editing*
+
+Launch the Manifest Generator: "C:\Program Files (x86)\Windows Kits\10\bin\x64\ecmangen.exe"
+Load the CustomEventChannels.man file.  Make any changes to the file. Ensure the following settings are observed:
+  * All channels are marked as Operational and Enabled.
+  * No more than 7 channels are added to each provider.
+  * Channels following the naming scheme (WEC#-Name)
+  * Symbols use underscores and not hyphens.
+
+*Compiling*
+
+To compile, perform the following from a cmd.exe shell:
+  * "C:\Program Files (x86)\Windows Kits\10\bin\x64\mc.exe" CustomEventChannels.man
+  * "C:\Program Files (x86)\Windows Kits\10\bin\x64\mc.exe" -css CustomEventChannels.DummyEvent CustomEventChannels.man
+  * "C:\Program Files (x86)\Windows Kits\10\bin\x64\rc.exe" CustomEventChannels.rc
+  * "C:\Windows\Microsoft.NET\Framework64\v4.x.x\csc.exe" /win32res:CustomEventChannels.res /unsafe /target:library /out: CustomEventChannels.dll C:CustomEventChannels.cs
+
+*Deployment*
+
+For each WEF server you need to deploy this to, perform the following:
+1. Disable the Windows Event Collector Service: net stop Wecsvc
+2. Disable all current WEF subscriptions.
+
+Unload the current Event Channel file:
+1. wevtutil um C:\windows\system32\CustomEventChannels.man
+2. Copy (and replace) the following files to each WEF server under C:\Windows\system32: 
+  * CustomEventChannels.dll 
+  * CustomEventChannels.man
+3. Load the new Event Channel file:
+  * wevtutil im C:\windows\system32\CustomEventChannels.man
+4. Resize the log files:
+```
+$xml = wevtutil el | select-string -pattern "WEC"
+foreach ($subscription in $xml) {
+wevtutil sl $subscription /ms:2194304000
+}
+```
+5. Re-enable the WEF subscriptions.
+6. Re-enable the Windows Event Collector service
+
+**Sources**
+<https://medium.com/palantir/windows-event-forwarding-for-network-defense-cb208d5ff86f>
+<https://blogs.technet.microsoft.com/jepayne/2015/11/23/monitoring-what-matters-windows-event-forwarding-for-everyoneeven-if-you-already-have-a-siem/>
+<https://www.nsa.gov/ia/_files/app/Spotting_the_Adversary_with_Windows_Event_Log_Monitoring.pdf>
+<https://github.com/iadgov/Event-Forwarding-Guidance>
+[Microsoft Windows Event Forwarding to help with intrusion detection] (https://docs.microsoft.com/en-us/windows/threat-protection/use-windows-event-forwarding-to-assist-in-instrusion-detection)
+[Monitoring What Matters] (https://blogs.technet.microsoft.com/jepayne/2015/11/23/monitoring-what-matters-windows-event-forwarding-for-everyone-even-if-you-already-have-a-siem/)
+[Spotting the Adversary] (https://www.iad.gov/iad/library/reports/spotting-the-adversary-with-windows-event-log-monitoring.cfm)
+[Creating Custom Windows Event Forwarding Logs] (https://blogs.technet.microsoft.com/russellt/2016/05/18/creating-custom-windows-event-forwarding-logs/)
+[Windows Logging Cheat Sheet] (https://static1.squarespace.com/static/552092d5e4b0661088167e5c/t/580595db9f745688bc7477f6/1476761074992/Windows+Logging+Cheat+Sheet_ver_Oct_2016.pdf)
+[Event Forwarding Guidance] (https://github.com/iadgov/Event-Forwarding-Guidance/)
+[Windows Event Log Reference] (https://msdn.microsoft.com/en-us/library/aa385785%28v=vs.85%29.aspx)
+[Windows Event Log Consuming Events] (https://msdn.microsoft.com/en-us/library/dd996910%28v=vs.85%29.aspx)
+[Advanced XML Filtering] (https://blogs.technet.microsoft.com/askds/2011/09/26/advanced-xml-filtering-in-the-windows-event-viewer/)
+[XPath Documentation] (https://www.w3.org/TR/xpath/)
 
   
 *links below*
