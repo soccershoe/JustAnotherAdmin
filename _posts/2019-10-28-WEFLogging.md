@@ -111,9 +111,9 @@ Build New WEF Server (This is te abbreviated version if your infrastructure is g
 4. Create D:\WEC-EventLogs.
 5. Deploy Subscriptions using .\WEC-Deploy-Subscriptions.ps1.
 6. Deploy the Channels.
-       1. wevtutil um C:\windows\system32\CustomEventChannels.man (only needed if CustomEventChannels.man has been previously loaded)
-       2. xcopy C:\WEC-Build\CustomEventChannels.* C:\windows\system32
-       3. wevtutil im C:\windows\system32\CustomEventChannels.man
+   * wevtutil um C:\windows\system32\CustomEventChannels.man (only needed if CustomEventChannels.man has been previously loaded)
+   * xcopy C:\WEC-Build\CustomEventChannels.* C:\windows\system32
+   * wevtutil im C:\windows\system32\CustomEventChannels.man
 7. Restart Server
 8. Set EventLog size using .\WEC-Set-EventlogSize.ps1.
 9. Move EventLogs using .\WEC-Move-Eventlogs.ps1.
