@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Windows Event Logging"
+title: "Windows Event Logging ...Part 1"
 date: 2019-10-28
 ---
 
-**Let's start Logging All The Things**
+**Let's start Logging All The Things!  ...Part 1**
 
 {{ more }}
 
