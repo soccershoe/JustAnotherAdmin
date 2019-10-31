@@ -314,5 +314,4 @@ wevtutil sl $subscription /ms:2194304000
   * [XPath Documentation](https://www.w3.org/TR/xpath/)
 
   
-*links below*
 
