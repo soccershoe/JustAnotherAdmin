@@ -108,7 +108,9 @@ Here is where I have placed all my necessary files for building the WEC server. 
 
 **Configure your Auditing GPO**
 
-Client Auditing is configured via a GPO.  I've created a new one specific to Auditing in my environment.  Do what's appropriate for yours. Update the GPO as necessary to increase what is being audited.  You can find examples in the links below for what to audit.  I've included in my files a copy of my auditing settings.  Clients pick which WEF server to grab their configuration from via settings defined in the GPO.  Clients pick depending on what Active Directory defined site they are in, or by IP address for sites that may be larger than what one WEF server should handle.
+Client Auditing is configured via a GPO.  I've created a GPO specific to Auditing for clients in my environment.  Do what's appropriate for yours. Update the GPO as necessary to increase what is being audited by default from Microsoft.  
+
+You can find examples in the links below for what to audit and how best to configure your settings.  I've included in my files here a copy of my auditing settings.  Clients pick which WEF server to grab their configuration from via settings defined in the GPO.  GPO's are pretty flexible if you use Group Policy Preferences (GPP) and use things like AD Site or IP address range if you suspect your environment is larger than what one WEF server could handle.
 
 For redundancy, I've created the GPO such that clients will send their events to two different WEC servers at the same time.
 
@@ -134,6 +136,43 @@ Build New WEF Server (This is te abbreviated version if your infrastructure is g
 9. Move EventLogs using .\WEC-Move-Eventlogs.ps1.
 
 the end
+
+**Configure the WEC Collectors**
+
+Most of the work is done via GPO. The Site GPO's will be linked to client sites that will define which WEC server they connect to to get their
+subscriptions.  The rest of the configuration is completed in the following sections.
+
+   * Create the folder C:\WECScripts.  We'll store our scripts and configuration files here
+   * Create the folder D:\WEC-EventLogs.  We'll store the actual event log files here.  Putting them on a separate disk can help with disk performance if you are worried about that.
+
+Deploy some Scheduled Maintenance tasks.  Add each of these Scheduled tasks in Task Scheduler by importing the .xml located in C:\WECScripts.  Open Task Scheduler and select Task Scheduler Library, then click on Import Task on the right bar.
+
+1. WEC-HTTPErr-Grooming.xml - clears the logs in the httperr folder as they fill up the C: drive
+2. WEC-Registry-Grooming.xml - clears client subscriptions in the registry to prevent registry bloat and bad performance
+3. Weekly Reboot.xml - clear any memory leaks
+4. Daily Windows Update - automatically apply windows updates to get ahead of security or other Windows issues.  Module, Script and Scheduled task are located in my example files.  I wouldn't call these servers needing any sort of 99.999% uptime.  So reboot them and update them often.
+5. System_Microsoft-Windows-Resource-Exhaustion-Detector_2004 - This task will restart the server if event id 2004 shows up in the System
+event log.  2004 warns of resource exhaustion.  It's happened to me, so I made this.
+
+**Deploy the Channels**
+
+Once the DLL has been created using the directions previous, use the following steps to deploy the DLL. This must be executed on each
+Subscription Manager (WEC server):
+1. Unload the existing manifest via command line:  wevtutil um C:\windows\system32\CustomEventChannels.man (it may not exist if
+you haven't yet built the server).
+2. Copy your newly created CustomEventChannels.man and CustomEventChannels.dll files into c:\windows\system32.  These files are
+preconfigured using the existing documented paths and located in C:\WEC-Build.
+3. Import the new manifest via command line:  wevtutil im C:\windows\system32\CustomEventChannels.man. This creates the
+defined channels and log files on the WEC servers.
+4. Restart the server.
+5. I also recommend increasing the size of each channel to 2GB.  Run the example Powershell below or 'WEC-Set-EventlogSize.ps1' located in C:\WEC-Scripts. 
+
+```
+$xml = wevtutil el | select-string -pattern "WEC"
+foreach ($subscription in $xml) {
+wevtutil sl $subscription /ms:2194304000
+}
+```
 
 
 
