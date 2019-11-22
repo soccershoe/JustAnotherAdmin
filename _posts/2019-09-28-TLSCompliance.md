@@ -6,7 +6,7 @@ date: 2019-09-28
 
 ## TLS Security and Compliance
 
-I'm a bit late to this party (POODLE in 2014, PCI DSS 3.1 in 2016) but I thought I'd share some previous info I had on making sure your servers were TLS compliant.  Maybe you are concerned for security or checking the box for PCI compliance.  Hopefully this will help.  
+I'm a bit late to this party (POODLE in 2014, PCI DSS 3.1 in 2016) but I thought I'd share some previous info I had on making sure your servers were TLS compliant.  Maybe you are concerned for security or checking the box for PCI compliance.  Hopefully this will help. The information below is taylored to my environments, but use this in any way helpful.
 
 {{ more }}
 
@@ -103,3 +103,9 @@ An application that needs remediation will show results for 'SSLv3' under the ci
   * OpenJDK or Oracle JavaSDK need to be at least 1.7 to support TLS 1.2.  And then must be enabled in the config.  Both apps 1.8 is supported TLS 1.2 as default.  Further application specific settings may be required.​
   * PHP version 5.3 or later is required for TLS 1.2.  Further application specific settings may be required.
   * Python version 1.19.1 is required for TLS 1.2​.  Further application specific settings may be required.
+
+
+## Other Useful Links
+ * [NIST technical mumbo jumbo](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-52r1.pdf)
+ * [A good explanation](https://www.securitymetrics.com/blog/problem-sha-1-updating-your-security-certificate)
+ * [2017 Microsoft Advisory](https://support.microsoft.com/en-us/help/4010323/title)
