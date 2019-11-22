@@ -38,7 +38,7 @@ One troubling example I found was a developer working in Java for the Oracle tea
 
 ## Testing Your Compliance
 
-# Testing your OS
+### Testing your OS
 **Powershell**
 
 Run the Get-TLS.ps1 script on your server to test local TLS OS compliance.  Expected results should look like this:
@@ -63,7 +63,7 @@ Remediation required looks like this:
 [![alt text](https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/images/tls/IISCryptoRemediateSmall.jpg "Looks good here")](https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/images/tls/IISCryptoRemediate.jpg)
 
 
-# Testing your Application
+### Testing your Application
 
 **Nmap (Zenmap)**
 
@@ -90,12 +90,12 @@ An application that needs remediation will show results for 'SSLv3' under the ci
 
 ## How Can I Be Compliant?
 
-# Remediating your OS
+### Remediating your OS
   * The easiest way for Windows clients is to run the remedation script, 'Set-TLS.ps1'.
   * IISCrypto is also an acceptible solution.  
   * CentOS is required to be 6.9.  The only solution is to upgrade to this version to support TLS 1.1 or 1.2 by default.
 
-# Remediating your Application
+### Remediating your Application
   * .NET requires 4.5+.
   * IIS requires 7.5+.
   * Linux application remedation is mostly limited in scope to OpenSSL implementations.  https://testssl.sh/ will be able to help list where remedation is needed.  
