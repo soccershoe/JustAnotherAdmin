@@ -1,0 +1,1 @@
+https://community.ipswitch.com/s/article/Use-Netsh-to-capture-the-network
