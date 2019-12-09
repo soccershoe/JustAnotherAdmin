@@ -14,6 +14,19 @@ Each of your domain controllers also have a local account database.  This is whe
 
 ![alt text](https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/images/sweating.jpg)
 
+Here's how to change your DSRM password
+1. Start up an administrative command prompt.
+2. type in `ntdsutil`
+3. type `set dsrm password`
+4. type `reset password on server myservername`
+  * you can type in `reset password on server null` to change the password on the local server
+5. enter your new password, twice, when prompted
+6. type `q` and enter twice to quit
+7. save off your new password in your secured password database
+8. enjoy your new level of security
+
+[![alt text](https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/images/dsrm.png "All Secured Here Sir!")](https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/images/dsrm.png)
+
 In the past I have seen articles on how to syncronize the account password using a domain account and GPO.  I'm not sure if I could really endorse this method, even if you have your [Credential Tiering](https://soccershoe.github.io/JustAnotherAdmin/blog/2020/01/07/CredentialTiering) and [AGPM](https://docs.microsoft.com/en-us/microsoft-desktop-optimization-pack/agpm/) set up for your environment.  This password is just as, or even more important, than the domain administrator account.  Don't make it easier for offline cracking if your 'server room' just happens to be under Chad's desk or in Chad's closet.  Don't be Chad.  Your DSRM password should be unique for each domain controller and stored securely in your physical or virtual password vault.  
 
 [Sync DSRM Password](https://blogs.technet.microsoft.com/askds/2009/03/11/ds-restore-mode-password-maintenance/)
