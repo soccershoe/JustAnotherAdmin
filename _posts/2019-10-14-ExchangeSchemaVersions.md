@@ -4,7 +4,7 @@ title: "Schema Versions for Exchange"
 date: 2019-10-14
 ---
 
-**Need to do some AD Schema updates for every Exchange CU for some reason.**
+**How come I need to do AD Schema updates for every Exchange CU?!**
 
 {{ more }}
 

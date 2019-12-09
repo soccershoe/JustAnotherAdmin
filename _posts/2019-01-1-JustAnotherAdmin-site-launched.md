@@ -4,7 +4,7 @@ title: "Just Another Admin, Launches Site"
 date: 2019-01-01
 ---
 
-I'm putting this on the interwebs.  Putting together a central knowledge location for myself.  Sharing with the world and seeing if I can learn anything in the process.  
+I'm putting things on the interwebs.  And putting together a central knowledge location for myself.  I'm also sharing this with the world, and putting myself out there, so I can learn things in the process.  
 
 {{ more }}
 
