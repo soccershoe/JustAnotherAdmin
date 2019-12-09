@@ -20,11 +20,11 @@ If you put your certificate for LDAPS into the NTDS store, it will be the select
 
 I'm not going to list steps getting a certificate from your CA.  Hopefully you already have that taken care of.  Maybe in a future post I'll add one for how to set up and get certificates from your own CA.  There are [lots](https://www.altaro.com/hyper-v/request-ssl-windows-certificate-server/) of [good](https://blogs.msdn.microsoft.com/tysonpaul/2016/05/24/certificate-request-from-standalone-ca-certificate-authority-for-operations-manager-scom-2012r2/) [articles](https://www.leeejeffries.com/request-an-ssl-certificate-from-a-windows-ca-without-web-enrolment/) about it.  
 
-1. You have your PFX, CER, or whatever file you got from your CA which includes the private key.  Check.
-2. You open your Computer Certificate Manager MMC Snapin.  Run certlm.msc.  Check.
-⋅⋅* By the way.  This is to import the certificate into the Computer MY store.
-3. So, if you skipped step 2 because you wanted to import your cert into the Service My store, then proceed here.  Check.
-⋅⋅* Open the MMC.exe console.  Add the Certificates snapin, and in the subsequent pop-up, select 'Service' instead.  Select the ADDS service if you are wanting to have a LDAPS cert used.  Import to the Service MY store.  Check.
+1. You have your PFX, CER, or whatever file you got from your CA which includes the private key.  **Check**.
+2. You open your Computer Certificate Manager MMC Snapin.  Run certlm.msc.  **Check**.
+  * By the way.  This is to import the certificate into the Computer MY store.
+3. So, if you skipped step 2 because you wanted to import your cert into the Service My store, then proceed here.  **Check**.
+  * Open the MMC.exe console.  Add the Certificates snapin, and in the subsequent pop-up, select 'Service' instead.  Select the ADDS service if you are wanting to have a LDAPS cert used.  Import to the Service MY store.  **Check**.
 4. Double check that the certificate you imported has the private key.
 5. And if your PFX import added extra trusted root chain certificates, move those to the Intermediate or Root trusted Stores where appropriate.  
 
