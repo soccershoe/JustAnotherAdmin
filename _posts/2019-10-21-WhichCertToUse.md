@@ -16,7 +16,7 @@ Why I set this up using two different certificate stores was to separate the com
 
 If you put your certificate for LDAPS into the NTDS store, it will be the selected certificate for those requests hitting the ADDS service.  Any other requests coming in for the Computer Name will use the certificate in the computer MY store.  
 
-##### How do I add the certificate to the Store
+### How do I add the certificate to the Store
 
 I'm not going to list steps getting a certificate from your CA.  Hopefully you already have that taken care of.  Maybe in a future post I'll add one for how to set up and get certificates from your own CA.  There are [lots](https://www.altaro.com/hyper-v/request-ssl-windows-certificate-server/) of [good](https://blogs.msdn.microsoft.com/tysonpaul/2016/05/24/certificate-request-from-standalone-ca-certificate-authority-for-operations-manager-scom-2012r2/) [articles](https://www.leeejeffries.com/request-an-ssl-certificate-from-a-windows-ca-without-web-enrolment/) about it.  
 
