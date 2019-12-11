@@ -124,7 +124,7 @@ Ok.  This section needs a bit more info.  But here's what I have for now.
 
 **Appendix**
 
-Here's the link to all the files I'm using for my deployment.
+Here's the [link to all](https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/files/WEC-Files.zip) the files I'm using for my deployment.
 
   * List of WEF channels as I have configured:
 1. WEC-Powershell: Event channel for collecting PowerShell events.

@@ -95,7 +95,7 @@ event logs while adding new ones.
   * The Windows SDK is required to build the DLL. From Microsoft: "Developers who rely on `ecmangen` for event manifest creation are advised
 to install the Windows Creators Edition of the SDK to obtain the file"
 
-Here's a link to all the files used in my deployment:  
+Here's a [link to all the files](https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/files/WEC-Files.zip) used in my deployment:  
 
 Please see [tomorrow's post](https://soccershoe.github.io/JustAnotherAdmin/blog/2019/10/29/WEFLogging2) for the next steps.
 
