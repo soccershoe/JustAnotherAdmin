@@ -97,6 +97,6 @@ to install the Windows Creators Edition of the SDK to obtain the file"
 
 Here's a link to all the files used in my deployment:  
 
-Please see [tomorrow's post](https://soccershoe.github.io/JustAnotherAdmin/blog/2019/10/28/WEFLogging2) for the next steps.
+Please see [tomorrow's post](https://soccershoe.github.io/JustAnotherAdmin/blog/2019/10/29/WEFLogging2) for the next steps.
 
 -Laters
