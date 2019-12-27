@@ -54,4 +54,3 @@ It's amazing what's built into this swiss knife of a tool!!
 <https://blogs.msdn.microsoft.com/benjaminperkins/2018/03/09/capture-a-netsh-network-trace/>
 <https://docs.microsoft.com/en-us/message-analyzer/built-in-trace-scenarios>
 <https://docs.microsoft.com/en-us/message-analyzer/using-the-advanced-settings-microsoft-windows-ndis-packetcapture-dialog>
-<https://docs.microsoft.com/en-us/message-analyzer/built-in-trace-scenarios>
