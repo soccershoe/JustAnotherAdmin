@@ -108,6 +108,6 @@ ou=department,dc=example,dc=com").
 Preference in order negotiated is Kerberos, NTLMv2, NTLM, and LM.
 
 **References**
-https://tools.ietf.org/html/rfc4511
-https://technet.microsoft.com/en-us/library/cc961766.aspx
-https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol
+[Alt https://tools.ietf.org/html/rfc4511](https://tools.ietf.org/html/rfc4511)
+[Alt https://technet.microsoft.com/en-us/library/cc961766.aspx](https://technet.microsoft.com/en-us/library/cc961766.aspx)
+[Alt https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol](https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol)
