@@ -1,0 +1,1 @@
+you already wrote up an email with the good and bad and what to do aobut it.  Maybe this would be a good post as well.  This is in regards to the March 2020 microsoft patch chaning the defaults for LDAP signing.
