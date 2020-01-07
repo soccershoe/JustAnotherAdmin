@@ -13,7 +13,7 @@ Here's some random stuff, like definitions and links and the like so that I don'
 **What is LDAP?**
 LDAP is an industry standard Protocol that systems use to connect to a directory, such as Active Directory. It facilitates programmatic
 access to that directory for tasks such as looking up contact info, usernames or other data stored in the directory database. LDAP is defined
-in [Alt RFC4511](https://tools.ietf.org/html/rfc4511). It is a client-server model. The client asks a question and the server replies with an answer.
+in [RFC4511](https://tools.ietf.org/html/rfc4511). It is a client-server model. The client asks a question and the server replies with an answer.
 
 **LDAP Version History**
 * *LDAPv1* – This is the original version of LDAP. It was never codified as a standard. Many libraries still support this version. It had serious
@@ -37,7 +37,7 @@ Directory. There may be better or more appropriate alternative ways to authentic
 LDAP generally supports Bind types: *Anonymous* (no user/pass), *Unauthenticated* (user but no pass), *User/Pass authenticated* (user and
 pass supplied). Anonymous and Unauthenticated methods allow clear text passwords being sent and should be disallowed.
 
-The last Authentication mechanism is SASL. SASL is a framework as defined in [Alt RFC4422](https://tools.ietf.org/html/rfc4422) allows secured authentication between client and
+The last Authentication mechanism is SASL. SASL is a framework as defined in [RFC4422](https://tools.ietf.org/html/rfc4422) allows secured authentication between client and
 server. Both parties can negotiate which mechanism to use. Mechanisms are GSSAPI, GSS-SPENGO, External, and Digest-MD5.
 It is recommended to use Simple Binds using username and password only after starting a secured session (TLS or StartTLS), 
 or SASL using GSSAPI with either Kerberos or NTLMv2.  All transmission of the username/password should be secured.
@@ -108,6 +108,6 @@ ou=department,dc=example,dc=com").
 Preference in order negotiated is Kerberos, NTLMv2, NTLM, and LM.
 
 **References**
-[Alt https://tools.ietf.org/html/rfc4511](https://tools.ietf.org/html/rfc4511)
-[Alt https://technet.microsoft.com/en-us/library/cc961766.aspx](https://technet.microsoft.com/en-us/library/cc961766.aspx)
-[Alt https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol](https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol)
+[https://tools.ietf.org/html/rfc4511](https://tools.ietf.org/html/rfc4511)
+[https://technet.microsoft.com/en-us/library/cc961766.aspx](https://technet.microsoft.com/en-us/library/cc961766.aspx)
+[https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol](https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol)

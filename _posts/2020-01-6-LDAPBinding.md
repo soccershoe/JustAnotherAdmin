@@ -10,11 +10,11 @@ date: 2020-01-6
 
 Have you ever opened up ldp.exe, connected to your ldap server, and then tried a Simple Bind with some random user?  WTH??!!  How is that successful?!
 
-![Alt LdapAnon](https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/images/LdapAnon.png)
+![LdapAnon](https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/images/LdapAnon.png)
 
 Why is that even a thing?  Microsoft has since Windows 2000 allowed anonymous binds by default.  This is not the case with other Ldap providers like OpenLdap.  That's so strange.  The anonymous user has no permission in Active Directory to do anything, which is good (unless you really messed around with permissions! don't do that).  Though there is no concern with AD, there is concern with lazy developers who use Ldap for authentication.  A dev application could give false access to that app based on anonymous access.  Imagine logging into an app with just a username and null password.  No bueno.  Single factor auth.  
 
-Oh, sweet, would you look at that....  The anonymous bind is allowed in the ldap [Alt RFC4511](https://tools.ietf.org/html/rfc4511)
+Oh, sweet, would you look at that....  The anonymous bind is allowed in the ldap [RFC4511](https://tools.ietf.org/html/rfc4511)
 
 Microsoft has made an update to Windows Server 2019 allowing you to disable anonymous ldap access, but it's not disabled by default.  Again, why??
 
