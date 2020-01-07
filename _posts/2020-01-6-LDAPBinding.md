@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "LDAP Binding"
-date: 2020-01-8
+date: 2020-01-6
 ---
 
 **What's the deal with Anonymous Binds?**
