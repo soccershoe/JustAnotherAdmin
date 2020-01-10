@@ -6,6 +6,8 @@ date: 2020-10-21
 
 I want to find out who's connecting to my ldap server and how they are connecting.  I don't see anything in the standard log files.  I don't want to install wireshark on my domain controller either.  Where's the beef?
 
+![Beef](https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/images/wherebeef.jpg)
+
 {{ more }}
 
 This is an easy one.  All it takes is a simple registry update on your DC.  Make that change and you are golden.  No reboots or nothing.  It takes effect immediately.  
