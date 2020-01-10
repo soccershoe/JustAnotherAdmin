@@ -14,8 +14,10 @@ Up your NTDS logging by changing the '16 LDAP Interface Events' from 0 to 3 for 
 
 *Warning* Start out with a level 2 and make sure your domain controller load isn't bad before continuing.  Level 2 gives good detail by the way.  
 
-https://support.microsoft.com/en-us/help/314980/how-to-configure-active-directory-and-lds-diagnostic-event-logging
+[https://support.microsoft.com/en-us/help/314980/how-to-configure-active-directory-and-lds-diagnostic-event-logging](https://support.microsoft.com/en-us/help/314980/how-to-configure-active-directory-and-lds-diagnostic-event-logging)
 
 Now that I have my logging cranked up, what can I do with it?  Here's what I've used it for:
 * Find out who is doing Simple Binds to my domain controllers and kick them to the curb for sending passwords in cleartext over the wire
 * SSL issues relating to clients failing to connect to LDAPS
+
+Give it a go.  At the least turn it on and forget about it until you need it some day.  Better to have it in hand than to find you need it later and not have it available.
