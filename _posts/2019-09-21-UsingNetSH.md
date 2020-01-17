@@ -6,9 +6,12 @@ date: 2019-09-21
 
 ## To All the NetSH Commands I've Used Before
 
-I"m writing this down so I can remember for the future.  I've used NetSH so many times in the past and have to look all this info up every time.  It's just one of those useful tools that you don't use every day and thus forget how to use them.  It is a veritable swiss army knife of tools.  It does everything.  Most of the time I've been using it to capture domain controller networking traffic.  I hate installing Wireshark on domain controllers for security concerns (maybe a future post).  I'll try updating this post as I use the command in the future.
+I"m writing this down so I can remember for the future.  I've used NetSH so many times in the past and have to look all this info up every time.  It's just one of those useful tools that you don't use every day and thus forget how to use them.  
 
 {{ more }}
+
+Netsh is a veritable swiss army knife of tools.  It does everything.  Most of the time I've been using it to capture domain controller networking traffic.  I hate installing Wireshark on domain controllers for security concerns (maybe a future post).  I'll try updating this post as I use the command in the future.
+
 
 One of things annoying about capturing network traces with NetSH is the output format.  You have to convert the .ETL file from NetSH to a .CAP file that you can use to view in Wireshark.  Microsoft has killed off Netmon a long time ago, and just killed off Microsoft Message Analyzer.  I'm not sure what else will convert a .ETL file to a .CAP.  MS has removed the Message Analyzer link from their downloads page.  And if you want to download Netmon, it's still there, but it has limitations on the files it can process.  I've had to revert to the the Wayback Machine to find cached download links for Message Analyzer.  I'm not sure what I'll be using to convert those files in the future, but the old software seems to be fine for now.  I liked Message Analyzer.  I wish they hadn't had stopped development.
 
