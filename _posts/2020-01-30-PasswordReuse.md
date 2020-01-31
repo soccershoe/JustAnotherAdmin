@@ -12,65 +12,72 @@ Here's what I'm dealing with.  I've got quite a few admins.  And several Windows
 
 Admins using the same passwords across trusted forest boundaries....   This definitely happens.  All the time.  Even after people get their hand slapped doing it, or see other people get their hand slapped.  
 
-If you have a malicious actor in your environment, let's say they popped your Domain Admin account in one, they are definitely going to try those same credentials across your trusts or wherever else they can try them.  There's no roadblocks for them to continue to move between your domains and continue to cause havok.  This happens all the time at companies.  It happens when you don't vet the security of a new subsidiary you are integrating.  It happens when you have a nice Pen test team and they are poking about.  It happens because the admins have too many accounts in too many forests (please use a password manager)! This is a golden ticket/silver ticket/pass-the-hash opportunity where that malicous actor smiles really big smile (not that you can see them smile because hackers wear ski caps under their hoodies).  
+If you have a malicious actor in your environment, let's say they popped your Domain Admin account in one domain, they are definitely going to try those same credentials across your trusts or wherever else they can try them.  There's no roadblocks for them to continue to move between your domains and to continue to cause havok.  This happens all the time at companies.  It happens when you don't vet the security of a new subsidiary before integrating.  It happens when you have a nice Pen test team and they are poking about.  It happens because the admins have too many accounts in too many forests (please use a password manager) and don't want to manage all those passwors! This is a golden ticket/silver ticket/pass-the-hash/lateral movement opportunity where that malicous actor smiles really big smile (not that you can see them smile because hackers wear ski caps under their hoodies).  
 
 ![HackerSmile](https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/images/hackersmile.png)
 
-**And please set up logging using WEF or other methods**  You'll want to create roadbumps for the hacker to be able to alert you when things happen.  You can follow my [WEF Logging](https://soccershoe.github.io/JustAnotherAdmin/blog/2019/10/28/WEFLogging) posts as a start.  
+**_And please set up logging using WEF or other methods_**  You'll want to create roadbumps for the hacker to be able to alert you when things happen.  You can follow my [WEF Logging](https://soccershoe.github.io/JustAnotherAdmin/blog/2019/10/28/WEFLogging) posts as a start.  
 
-# How are you going to detect password hash reuse?
+## How are you going to detect password hash reuse?
 
-## Note - everything here I've done in my lab.  This is something I've played with but not made it into a production environment yet.  Please do your own validations.
+### _Note - everything here I've done in my lab.  This is something I've played with but not made it into a production environment yet.  Please do your own validations._
 
-The idea behind this is based on the same idea from the totally awesome [Have I Been Pwned](https://haveibeenpwned.com/API/v3) site.  The site, without knowing your password and based on a few characters of your password hash, knows if you have been part of the pwned database.  You can plug into the API and find out!  It is just amazing.
+The idea behind this is based on the same idea from the totally awesome [Have I Been Pwned](https://haveibeenpwned.com/API/v3) site.  The site, without knowing your password and based on a few characters of your hashed password, knows if you have been part of the pwned database.  You can plug into the API and find out!  It is just amazing.
 
-* some nutty math stuff - ![https://en.wikipedia.org/wiki/K-anonymity](https://en.wikipedia.org/wiki/K-anonymity)
-* some help explaining some of that math stuff at least for me - ![https://www.troyhunt.com/introducing-306-million-freely-downloadable-pwned-passwords/](https://www.troyhunt.com/introducing-306-million-freely-downloadable-pwned-passwords/)
+* some nutty math stuff - [https://en.wikipedia.org/wiki/K-anonymity](https://en.wikipedia.org/wiki/K-anonymity)
+* some help explaining some of that math stuff at least for me - [https://www.troyhunt.com/introducing-306-million-freely-downloadable-pwned-passwords/](https://www.troyhunt.com/introducing-306-million-freely-downloadable-pwned-passwords/)
 
 Their secret sauce:  Basically, if we compare the first 5 characters of the hashed password, we have something like a 99.99% chance that the password is unique.  
 
 Here's what we're going to do.  Windows stores all it's passwords in a hash (why is this not an issue, see below).  We dump it out using your tool of choice staying in a secured spot, like on the domain controller.  Clean it up so that you have just the first 5 characters of the hashed passwords so you can play with this in an unsecured location.
 
-I've been testing using this tool from [Michael Grafnetter](https://github.com/MichaelGrafnetter).  [DSInternals](https://www.dsinternals.com/en/downloads/).  Specifically, Get-ADReplAccount.  You can use mimikatz, powershell empire, or whatever else allows you to get those hashes.  
+I've been testing using this tool from [Michael Grafnetter](https://github.com/MichaelGrafnetter).  Please check out his great [DSInternals](https://www.dsinternals.com/en/downloads/) Powershell module.  Specifically, Get-ADReplAccount.  Or, you can use mimikatz, powershell empire, or whatever else allows you to get those hashes.  
 
 Download and Import the Powershell module on your domain controller.
 
 # Here's the code to get those hashes, trim them to 5 characters, and save them off to a file.
 
-```$HashList = @()```
-```$AllUsers = Get-ADUser -filter *```
-``` ```
-```foreach ($User in $AllUsers) {```
-```    $Hash = (Get-ADReplAccount -Server <Servername> -ObjectGuid $User.ObjectGUID | Format-Custom -View HashcatNT | Out-String).Trim() -replace ".{27}$"```
-```    $HashList += $Hash```
-```    }```
-``` ```
-```$HashList | Out-File C:\temp\HashOutput.txt```
+```
+$HashList = @()
+$AllUsers = Get-ADUser -filter *
+
+foreach ($User in $AllUsers) {
+    $Hash = (Get-ADReplAccount -Server <Servername> -ObjectGuid $User.ObjectGUID | Format-Custom -View HashcatNT | Out-String).Trim() -replace ".{27}$"
+    $HashList += $Hash
+    }
+
+$HashList | Out-File C:\temp\HashOutput.txt
+```
 
 For those nice Pen Testers, here's an offline dit version for extracting the hashes.
 
+```
 # Save ntds.dit for offline use
-```C:\>ntdsutil```
-```ntdsutil: activate instance ntds```
-```ntdsutil: ifm```
-```ifm: create full c:\pentest```
-```ifm: quit```
-```ntdsutil: quit```
-
+C:\>ntdsutil
+ntdsutil: activate instance ntds
+ntdsutil: ifm
+ifm: create full c:\pentest
+ifm: quit
+ntdsutil: quit
+```
+```
 # Offline DB testing
 # First, we fetch the so-called Boot Key (aka SysKey)
 # that is used to encrypt sensitive data in AD:
-```#$key = Get-BootKey -SystemHivePath 'C:\IFM\registry\SYSTEM'```
-```$key = Get-BootKey -Online```
- 
+#$key = Get-BootKey -SystemHivePath 'C:\IFM\registry\SYSTEM'
+$key = Get-BootKey -Online
+```
+```
 # We then load the DB and decrypt password hashes of all accounts:
-```Get-ADDBAccount -All -DBPath 'C:\temp\ifm\Active Directory\ntds.dit' -BootKey $key ```
- 
+Get-ADDBAccount -All -DBPath 'C:\temp\ifm\Active Directory\ntds.dit' -BootKey $key
+```
+```
 # We can also get a single account by specifying its distinguishedName,
 # objectGuid, objectSid or sAMAccountName atribute:
-```Get-ADDBAccount -DistinguishedName 'CN=JaneDoe,CN=Users,DC=domainname,DC=local' -DBPath 'C:\temp\ifm\Active Directory\ntds.dit' -BootKey $key ```
-```(Get-ADDBAccount -DistinguishedName 'CN=JohnDoe,CN=Users,DC=domainname,DC=local' -DBPath 'C:\temp\ifm\Active Directory\ntds.dit' -BootKey $key).NTHash```
-```(Get-ADDBAccount -DistinguishedName 'CN=krbtgt,CN=Users,DC=domainname,DC=local' -DBPath 'C:\temp\ifm\Active Directory\ntds.dit' -BootKey $key).NTHash```
+Get-ADDBAccount -DistinguishedName 'CN=JaneDoe,CN=Users,DC=domainname,DC=local' -DBPath 'C:\temp\ifm\Active Directory\ntds.dit' -BootKey $key 
+(Get-ADDBAccount -DistinguishedName 'CN=JohnDoe,CN=Users,DC=domainname,DC=local' -DBPath 'C:\temp\ifm\Active Directory\ntds.dit' -BootKey $key).NTHash
+(Get-ADDBAccount -DistinguishedName 'CN=krbtgt,CN=Users,DC=domainname,DC=local' -DBPath 'C:\temp\ifm\Active Directory\ntds.dit' -BootKey $key).NTHash
+```
 
 Do this in each domain or forest you want to check.  You'll have the hashes, only represented by their first 5 characters, and the associated username.  
 
