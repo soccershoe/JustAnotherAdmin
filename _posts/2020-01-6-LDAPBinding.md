@@ -18,7 +18,11 @@ Oh, sweet, would you look at that....  The anonymous bind is allowed in the ldap
 
 Microsoft has made an update to Windows Server 2019 allowing you to disable anonymous ldap access, but it's not disabled by default.  Again, why??
 
-Please use authentication when connecting to LDAP.  TLS is great if you have a PKI environment.  Connecting to LDAPS is probably the best and most supported way.  
+Please use some sort of SSL or SASL with encryption authentication when connecting to LDAP.  TLS is great if you have a PKI environment.  Connecting to LDAPS is probably the best and most supported way.  
 
-Ooh... That reminds me.  Microsoft is releasing a patch in March of 2020 which changes the default settings in Windows.  This might catch a lot of organizations by surprise.  It updates all windows OS's to use Signing by default.  This makes it much harder to send your LDAP credentials in clear text over the wire.  Simple Binds without some sort of mechanism to hide your credentials will now fail.  This goes for applications and java apps and a bazillion service accounts you probably have in your organization.  Please see my next post on this speedbump of IT.  
+Ooh... That reminds me.  Links below.  Microsoft is releasing a patch in March of 2020 which changes the default settings in Windows.  This might catch a lot of organizations by surprise.  It updates all windows OS's to use Signing by default.  This makes it much harder to send your LDAP credentials in clear text over the wire.  Simple Binds without some sort of mechanism to hide your credentials will now fail.  This goes for applications and java apps and a bazillion service accounts you probably have in your organization.  Please see my next post on this speedbump of IT.  
 
+
+![https://support.microsoft.com/en-us/help/4520412/2020-ldap-channel-binding-and-ldap-signing-requirement-for-windows](https://support.microsoft.com/en-us/help/4520412/2020-ldap-channel-binding-and-ldap-signing-requirement-for-windows)
+![https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023)
+![https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/ldap-channel-binding-and-ldap-signing-requirements-march-update/ba-p/921536](https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/ldap-channel-binding-and-ldap-signing-requirements-march-update/ba-p/921536)

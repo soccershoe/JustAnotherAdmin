@@ -53,6 +53,27 @@ I'm not even sure what I'm doing here with this command.  Too much going on.
 netsh trace start capture=yes overwrite=yes maxsize=4096 tracefile=C:\Temp\NoConnection\net_mpssvc.etl persistent=yes provider="Microsoft-Windows-IPSEC-SRV" keywords=0xffffffffffffffff level=0xff provider={2588030D-920F-4AD6-ACC0-8AA2CD761DDC} keywords=0xffffffffffffffff level=0xff provider={94335EB3-79EA-44D5-8EA9-306F4FFFA070} keywords=0xffffffffffffffff level=0xff provider={94335EB3-79EA-44D5-8EA9-306F49B3A040} keywords=0xffffffffffffffff level=0xff provider={E4FF10D8-8A88-4FC6-82C8-8C23E9462FE5} keywords=0xffffffffffffffff level=0xff provider={5EEFEBDB-E90C-423A-8ABF-0241E7C5B87D} keywords=0xffffffffffffffff level=0xff provider={D8FA2E77-A77C-4494-9297-ACE3C12907F6} keywords=0xffffffffffffffff level=0xff provider={00000000-0000-0000-0000-000000000000} keywords=0xffffffffffffffff level=0xff provider={EB004A05-9B1A-11D4-9123-0050047759BC} keywords=0xffffffffffffffff level=0xff provider={28C9F48F-D244-45A8-842F-DC9FBC9B6E94} keywords=0xffffffffffffffff level=0xff  provider={5AD8DAF3-405C-4FD8-BCC5-5ABE20B3EDD6} keywords=0xffffffffffffffff level=0xff provider={28C9F48F-D244-45A8-842F-DC9FBC9B6494} keywords=0xffffffffffffffff level=0xff provider={A8351B7A-57BE-4388-8843-08DE1E321B7F} keywords=0xffffffffffffffff level=0xff provider={A487F25A-2C11-43B7-9050-527F0D6117F2} keywords=0xffffffffffffffff level=0xff Provider={5A1600D2-68E5-4DE7-BCF4-1C2D215FE0FE} keywords=0xffffffff level=0x5 Provider={106B464D-8043-46B1-8CB8-E92A0CD7A560} keywords=0xffffffff level=0x5 Provider={AD33FA19-F2D2-46D1-8F4C-E3C3087E45AD} keywords=0xffffffff level=0x5 Provider={106B464A-8043-46B1-8CB8-E92A0CD7A560} keywords=0xffffffff level=0x5
 ```
 
+## Random NetSH capture commands
+
+* ```netsh trace start capture=yes Ethernet.Type=IPv4 IPv4.Address=x.x.x.x tracefile=c:\temp\trace.etl```
+  * Capture everything between the local host and remote IP host
+* ```netsh trace start capture=yes Ethernet.Type=IPv4 IPv4.Address=x.x.x.x protocol=17 tracefile=c:\temp\trace.etl```
+  * Capture only UDP traffic ![https://en.wikipedia.org/wiki/List_of_IP_protocol_numbers](https://en.wikipedia.org/wiki/List_of_IP_protocol_numbers)
+
+## Other useful things with NetSH
+
+* Capture Filters (only when using 'capture=yes')
+  * CaptureInterface=<interface name or GUID> | ‘netsh trace show interfaces’ to list available interfaces.
+  * Ethernet.Address=<MAC address> | matches for both source and destination
+  * Ethernet.SourceAddress=<MAC address>
+  * Ethernet.DestinationAddress=<MAC address>
+  * Ethernet.Type=<ethertype> | eg. IPV4 or (IPv4,IPv6) or NOT(0x86DD) | ![MAC Ethertype](https://en.wikipedia.org/wiki/EtherType#Examples) if for some reason you need to filter out IPX traffic or something silly like that.
+  * IPv6.Address=<IPv6 address>
+
+And there are other capture filters out there as well.  Just do a little searching. 
+
+Happy Capturing!
+
 
 ## Reference Links
 [Cached Message Analyzer Download](https://web.archive.org/web/20191106164517/http://www.microsoft.com/en-us/download/details.aspx?id=44226)
