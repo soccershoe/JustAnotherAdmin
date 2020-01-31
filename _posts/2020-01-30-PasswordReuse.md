@@ -35,7 +35,7 @@ I've been testing using this tool from [Michael Grafnetter](https://github.com/M
 
 Download and Import the Powershell module on your domain controller.
 
-# Here's the code to get those hashes, trim them to 5 characters, and save them off to a file.
+**Here's the code to get those hashes, trim them to 5 characters, and save them off to a file.**
 
 ```
 $HashList = @()
@@ -59,19 +59,16 @@ ntdsutil: ifm
 ifm: create full c:\pentest
 ifm: quit
 ntdsutil: quit
-```
-```
+
 # Offline DB testing
 # First, we fetch the so-called Boot Key (aka SysKey)
 # that is used to encrypt sensitive data in AD:
 #$key = Get-BootKey -SystemHivePath 'C:\IFM\registry\SYSTEM'
 $key = Get-BootKey -Online
-```
-```
+
 # We then load the DB and decrypt password hashes of all accounts:
 Get-ADDBAccount -All -DBPath 'C:\temp\ifm\Active Directory\ntds.dit' -BootKey $key
-```
-```
+
 # We can also get a single account by specifying its distinguishedName,
 # objectGuid, objectSid or sAMAccountName atribute:
 Get-ADDBAccount -DistinguishedName 'CN=JaneDoe,CN=Users,DC=domainname,DC=local' -DBPath 'C:\temp\ifm\Active Directory\ntds.dit' -BootKey $key 
@@ -83,9 +80,9 @@ Do this in each domain or forest you want to check.  You'll have the hashes, onl
 
 Take this and compare with the other files from your other domains.  And now you have a yourself a way to check passwords with relative certainty that users aren't re-using their passwords.  
 
-Please use this with care.  And please ask your Security team if this is something safe and worth doing.  If it is, make it part of your quarterly checks or some automated process.
+_Please use this with care._  And please ask your Security team if this is something safe and worth doing.  If it is, make it part of your quarterly checks or some automated process.
 
 
 
-# Why is this not an issue?
+**Why is this not an issue?**
 Technically, yes, I guess this would be an issue.  This would be a super issue if everyone had access to the AD database.  But the server/service is not meant to be accessible by everyone.  It's meant to live in a security bubble where access like that is not granted, but only to highly privileged users.  Salting the entries wouldn't be of help because no untrusted access is granted.  AD doesn't store the password, it just stores the hash.  Then compares the hash to what you typed in when logging on.  It might be an MD4 (LM), or MD5 (NTLM), or AES256_CTS_HMAC_SHA1_96 (Kerberos).  This may have changed with server 2016/2019.  I haven't checked.
