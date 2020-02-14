@@ -4,7 +4,7 @@ title: "Self Service File Shares : Server Setup"
 date: 2020-02-14
 ---
 
-**Self-Service File Server : Server Setup**
+**Self-Service File Server : Server Setup**  Let's start that server up so we can start pumping out data dumps (because we all know that file shares are where data goes to die)!
 
 {{ more }}
 
@@ -30,9 +30,9 @@ You have your fresh server.  Add all the Roles and Features necessary.
 2. Features Installed (add additional Features as required by the Feature)
   1. Windows PowerShell
     1. Windows PowerShell 2.0 Engine
-  2. Remote Server Administration Tools
-    1. Role Administration Tools
-    2. AD DS and AD LDS Tools
+    2. Remote Server Administration Tools
+      1. Role Administration Tools
+      2. AD DS and AD LDS Tools
 
 ### DNS Config ###
 Give your new service a name.  I named mine 'Depot'.  Like a file depot.  I thought about 'Stacks', but stacks of files is terrible.  I originally just wanted 'Shares', but that DNS name was already taken by some other service.  So Depot it was, and I may be referring to 'Depot' during later writings.  
@@ -45,7 +45,8 @@ Run Powershell as Administrator and enable WinRM.  Lifted from [KB555966](https:
 
 1. Write the command prompt : "WinRM quickconfig" and press on the "Enter" button.
 2. The following output should appear:
-    1. ``` "WinRM is not set up to allow remote access to this machine for management.
+  1. 
+``` "WinRM is not set up to allow remote access to this machine for management.
 The following changes must be made:
  
 Set the WinRM service type to delayed auto start.
@@ -53,13 +54,17 @@ Start the WinRM service.
 Create a WinRM listener on HTTP://* to accept WS-Man requests to any IP on this
 machine.
  
-Make these changes [y/n]? y" ```
+Make these changes [y/n]? y" 
+```
+
 3. After pressing the "y" button, the following output should appear:
-    1. ``` "WinRM has been updated for remote management.
+  1. 
+``` "WinRM has been updated for remote management.
  
 WinRM service type changed successfully.
 WinRM service started.
-Created a WinRM listener on HTTP://* to accept WS-Man requests to any IP on this machine." ```
+Created a WinRM listener on HTTP://* to accept WS-Man requests to any IP on this machine." 
+```
 
 ### Disk Config ###
 We will be creating two disks, D: and E:.  One drive will be the data drive (D:\) and the other will be the archival drive (E:\).  

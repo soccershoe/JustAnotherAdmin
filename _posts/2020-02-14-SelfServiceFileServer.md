@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Self Service File Shares"
+title: "Self Service File Shares : Overview"
 date: 2020-02-14
 ---
 
-**Self-Service File Server**
+**Self-Service File Server** How can I enable my end users to self-provision their own SMB shares?  How do I get them closer to their data?  And why would I want to do that?  Too many questions.  
 
 {{ more }}
 
