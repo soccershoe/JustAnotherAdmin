@@ -23,6 +23,10 @@ _Personal_ represents Dropbox/Onedrive.  The end user has full permissions and f
 
 If data sets change or teams need capabilities beyond the _Team_ level, then they get migrated to a _Full Service_ SMB share.  Because the _Team_ quotas are set in stone and we want this to be a "self-service" service, we need hard rules.  But tiering this seemed obvious to me to decrease the random file share asks.
 
+_fyi_ ::  Before you get all the way through this, I do use a third party tool to facilitate adding users to groups.  But that can be automated away using native powershell.  GroupID has a couple of nice features going for it though.  GroupID by [Imanami](https://www.imanami.com/)
+
+_also fyi_ These scripts and steps are not a copy/paste to your setup.  You'll need to go in and modify for your understanding and your environment.  This is more of a framework for a deployment in your environment.  
+
 ### Building out the Details ###
 
 ***Problem Statement***
@@ -32,6 +36,7 @@ How do you give users almost self-serve file share creation and management and k
  * Windows Server 2012/2016 (I initially built this out using 2012, but I assume 2016 is valid as well)
   * Windows Roles: File and Storage Services, File and iSCSI Services, File Server, BranchCache for Network Files, Data Deduplication, DFS Namespaces, DFS Replication, File Server Resource Manager, Storage Services
   * Windows Features: Powershell, RSAT Tools, AD DS and AD LDS Tools
+  * GroupID by [Imanami](https://www.imanami.com/)
 
 ### High Level Features ###
 
