@@ -161,12 +161,10 @@ Create these custom permissions.  The default permissions inherited creates some
         2. Select the ‘Command’ tab
           1. Change Command Arguments to:  “quota modify /path:[Quota Path] /sourcetemplate:"25GB Extended Limit"”
 
-### Secure Stored Password ###
-I don't know if this is the most secure way to embed a password in the script or the most efficient process to make this work, but it's better than a clear-text password.  
-* Run Powershell ISE as administrator
-* In the 'Store-SecureCreds.ps1' file (more later on this file), add the password for your domain\filemonitor service account to line 3.  
-  * Run the script and save the output.  This output will be use later in the other Powershell Script.
-  * Edit the password out of the script and save that file.  No need to store it here.  Make sure you save that password though elsewhere, like your password vault.
+### Enable Data Dedupe ###
+* Microsoft speak:  From the Server Manager dashboard, right-click a data volume and choose Configure Data Deduplication.  Select the Enable data deduplication check box, enter the number of days that should elapse from the date of file creation until files are deduplicated, enter the extensions of any file types that should not be deduplicated, and then click Add to browse to any folders with files that should not be deduplicated.  In Server Manager, under File and Storage Services, and Servers, right-click the server and select Deduplication Schedule to continue to set up a schedule for deduplication.
+
+If you choose '0' it'll dedupe all files no matter their age.  I don't think this is a wrong choice, but of course choose for the load on your server.  On Win 2012, the task runs as a single process on a single core.  This can end up being CPU bound and affecting SMB performance.  Consider choosing a schedule where it is off-hours.  This process got upgraded in 2016 and not so much a worry then.  
 
 ### Enable Shadow Copies ###
 1. Right click on the Data drive and select “Configure Shadow Copies”.

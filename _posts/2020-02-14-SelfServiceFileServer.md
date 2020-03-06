@@ -10,6 +10,8 @@ date: 2020-02-14
 
 I looked everywhere and couldn't find a solution where users could set up their own file shares.  I got tired of having to set up groups and group memberships for access, as well as just setting up the share itself.  It was just busy-work.  
 
+What I'm going to do is create a mess of 3 or 4 postings.  They are going to be all over the place.  My explanations aren't going to make sense for creating this file service, as they don't really go from steps from an A-Z.  Please use this as inspiration, as a framework for creating your own solution.  Microsoft gives you all the tools to create this without anything else but native tools.  
+
 Today, users might have access to their own AWS S3 buckets or Dropbox/Onedrive space.  But those don't always meet the requirements of what SMB access traditionally gives.  You might have on-prem service accounts that drop stuff into shared locations, or multiple users need access to edit or archive 'team owned' files.  Those cloud solutions aren't easy or feasible to set up for those same user/team workflows.
 
 There are other options out there like AWS Cloud Gateway which fronts S3/Glacier buckets with locally cached storage.  That'll present an SMB share.  But I wanted to complete this with zero cost other than the resources I already had.  So, Powershell it is.  
