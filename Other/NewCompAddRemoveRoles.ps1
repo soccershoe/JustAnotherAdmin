@@ -5,3 +5,4 @@ Disable-WindowsOptionalFeature -FeatureName FaxServicesClientPackage -Online
 Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
 Enable-WindowsOptionalFeature -Online -FeatureName TelnetClient
 Disable-WindowsOptionalFeature -Online -FeatureName WorkFolders-Client
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux

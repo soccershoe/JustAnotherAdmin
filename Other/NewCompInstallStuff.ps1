@@ -1,3 +1,10 @@
+# Make C:\temp
+mdir c:\temp
+
+# Add Ubuntu
+Invoke-WebRequest -Uri https://aka.ms/wsl-ubuntu-1804 -OutFile C:\temp\Ubuntu.appx -UseBasicParsing
+Add-AppxPackage C:\temp\Ubuntu.appx
+
 # Install Chocolatey
 # --------------------
 $isadmin = [Security.Principal.WindowsIdentity]::GetCurrent().Groups -contains 'S-1-5-32-544'
@@ -6,7 +13,8 @@ If ($isadmin -eq $False) {write-host "Please run as Admin"} else {Set-ExecutionP
 # Install .NET Core
 # --------------------
 # Run a separate PowerShell process because the script calls exit, so it will end the current PowerShell session.
-&powershell -NoProfile -ExecutionPolicy unrestricted -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; &([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing 'https://dot.net/v1/dotnet-install.ps1'))) -Channel Current -Version Latest"
+# &powershell -NoProfile -ExecutionPolicy unrestricted -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; &([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing 'https://dot.net/v1/dotnet-install.ps1'))) -Channel Current -Version Latest"
+choco install dotnetcore-sdk
 
 # Install Powershell Core
 choco install powershell-core -y
