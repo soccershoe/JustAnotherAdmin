@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Increase Your LDAP Logging"
-date: 2020-10-21
+date: 2019-10-21
 ---
 
 I want to find out who's connecting to my ldap server and how they are connecting.  I don't see anything in the standard log files.  I don't want to install wireshark on my domain controller either.  Where's the beef?
