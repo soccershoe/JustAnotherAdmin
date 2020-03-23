@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "LDAP Policies and Performance"
-date: 2019-10-21
+date: 2020-03-23
 ---
 
 :scream:  "Uhg...  My developers keep saying that their LDAP connections on occasion time out.  Why do they keep bugging me?  I can't reproduce their issue with ldp.exe.  Everything looks healthy."  OR "Hey random developer, why are you maxing out my CPU with your poorly formed LDAP query running every 5 milliseconds!?"
