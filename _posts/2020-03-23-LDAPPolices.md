@@ -43,9 +43,11 @@ If you don't have any extra Query Policies and would like to use NTDSUTIL.exe to
 To summarize viewing the ldap policy values:  From an elevated admin cmd.exe prompt type - ```ntdsutil "ldap pol" conn "con to server <servername>" q "show values"```
 
 To summarize setting a ldap policy value:  From an elevated admin cmd.exe prompt type - 
-```ntdsutil "ldap pol" conn "con to server <servername>" q
-ldap policy: set MaxPageSize to 2000
-ldap policy: Commit Changes```
+```ntdsutil "ldap pol" conn "con to server <servername>" q```
+
+```ldap policy: set MaxPageSize to 2000```
+
+```ldap policy: Commit Changes```
 
 You can also use ldif files to change the policy.  I'll let you figure out how to do that one.  Not my favorite way to edit ldap, and at least for me would be the most error prone.  
 
