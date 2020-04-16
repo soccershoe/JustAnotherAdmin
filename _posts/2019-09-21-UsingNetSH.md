@@ -4,9 +4,9 @@ title: "Using NetSH"
 date: 2019-09-21
 ---
 
-## To All the NetSH Commands I've Used Before
+## To All the NetSH Commands I've Used Before.  
 
-I"m writing this down so I can remember for the future.  I've used NetSH so many times in the past and have to look all this info up every time.  It's just one of those useful tools that you don't use every day and thus forget how to use them.  
+I'm writing this down so I can remember for the future.  I've used NetSH so many times in the past and have to look all this info up every time.  It's just one of those useful tools that you don't use every day and thus forget how to use them.  
 
 {{ more }}
 
