@@ -46,7 +46,7 @@ Note the ifIndex number of your NIC.
 
 Next is to show what is in your arp cache:  ```Get-NetNeighbor -InterfaceIndex 22```
 
-And finally to apply the static entry:  ```Set-NetNeighbor -InterfaceIndex 12 -IPAddress "192.168.0.5" -LinkLayerAddress "00-00-12-00-00-ff"```
+And finally to apply the static entry:  ```Set-NetNeighbor -InterfaceIndex 12 -IPAddress "192.168.0.5" -LinkLayerAddress "00-00-12-00-00-ff" -State Permanent```
 
 If you need to remove it:  ```Remove-NetNeighbor -IPAddress 192.168.0.5```
 
