@@ -18,4 +18,12 @@ If you try to install but get the error message 'unable to resolve package sourc
 
 `[Net.ServicePointManager]::SecurityProtocol = "tls12"`
 
+Then restart the Powershell console.
+
+Then you should be able to update PowershellGet.
+
+`Install-Module –Name PowerShellGet –Force`
+
+Restart your console once more and you should be able to install anything you want at this point. Like `Install-Module -Name RDWebClientManagement`.
+
 ![Forgetting](https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/images/forgetting.png)
