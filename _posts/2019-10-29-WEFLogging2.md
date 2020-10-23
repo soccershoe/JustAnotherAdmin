@@ -236,6 +236,7 @@ wevtutil sl $subscription /ms:2194304000
   * [Windows Event Log Consuming Events](https://msdn.microsoft.com/en-us/library/dd996910%28v=vs.85%29.aspx)
   * [Advanced XML Filtering](https://blogs.technet.microsoft.com/askds/2011/09/26/advanced-xml-filtering-in-the-windows-event-viewer/)
   * [XPath Documentation](https://www.w3.org/TR/xpath/)
+  * [More Microsoft Reference](https://technet.microsoft.com/en-us/itpro/windows/keep-secure/use-windows-event-forwarding-to-assist-in-instrusion-detection)
 
   
 
