@@ -26,4 +26,12 @@ Then you should be able to update PowershellGet.
 
 Restart your console once more and you should be able to install anything you want at this point. Like `Install-Module -Name RDWebClientManagement`.
 
+And if that doesn't do it, you probably will need to enforce StrongCryptography for each 32 adn 64 bit versions of .net.
+
+`Set-ItemProperty -Path 'HKLM:\SOFTWARE\Wow6432Node\Microsoft\.NetFramework\v4.0.30319' -Name 'SchUseStrongCrypto' -Value '1' -Type DWord`
+
+`Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\.NetFramework\v4.0.30319' -Name 'SchUseStrongCrypto'  -Value '1' -Type DWord`
+
+Restart once more.  See if that does it for you.
+
 ![Forgetting](https://raw.githubusercontent.com/soccershoe/JustAnotherAdmin/master/images/forgetting.png)
